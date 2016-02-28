@@ -23,6 +23,8 @@ Most of your custom mappings will use leader key, so it had better to be easy to
 
 This one alone is a good reason for me to use spacebar as my leader key. Given that it's *equally* easily reachable for *both hands* space leaves me with all the alphanumeric keys as convenient shortcut options. Again in contrast to `,` which is typed by the right hand making left hand letters more comfortable options for typing shortcuts without stretching fingers.
 
+There's even a text editor (a flavour of Emacs) based around the idea of space key as a gateway to all the editor commands called [Spacemacs](http://spacemacs.org). I've been playing around with it a little bit recently and it has been positive experience so far. Spacemacs goes one step further by providing instant visual feedback about available commands once you've pressed space key.
+
 ## Think for yourself
 
 This way to use leader key fits _my_ workflow very well. It may or may not be as efficient in your case. Be critical of that "mappings every Vimmer should use" tips (and of this article as well). Try what works best for *you*, your fingers and your keyboard. If you're interested more in how I use Vim check out my [dotfiles](https://github.com/raindev/dotfiles) GitHub repo. Happy editing!
