@@ -27,6 +27,7 @@ main = hakyll $ do
         route $ customRoute $ (`replaceExtension` "html") . pullUp
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
@@ -61,6 +62,22 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateCompiler
 
+    create ["atom.xml"] $ do
+        route idRoute
+        compile $ do
+            let feedCtx = postCtx `mappend` bodyField "description"
+            posts <- fmap (take 10) . recentFirst =<<
+                loadAllSnapshots "posts/*" "content"
+            renderAtom myFeedConfiguration feedCtx posts
+
+    create ["rss.xml"] $ do
+        route idRoute
+        compile $ do
+            let feedCtx = postCtx `mappend` bodyField "description"
+            posts <- fmap (take 10) . recentFirst =<<
+                loadAllSnapshots "posts/*" "content"
+            renderRss myFeedConfiguration feedCtx posts
+
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
@@ -70,3 +87,12 @@ postCtx =
 
 pullUp :: (Identifier -> FilePath)
 pullUp = (head . tail . (splitOn "/")) . toFilePath
+
+myFeedConfiguration :: FeedConfiguration
+myFeedConfiguration = FeedConfiguration
+    { feedTitle       = "Thoughts and Opinions"
+    , feedDescription = "raindev's blog"
+    , feedAuthorName  = "Andrew Barchuk"
+    , feedAuthorEmail = "raindev@icloud.com"
+    , feedRoot        = "http://raindev.github.icloud.io"
+    }

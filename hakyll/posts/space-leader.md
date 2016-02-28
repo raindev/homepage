@@ -28,3 +28,5 @@ There's even a text editor (a flavour of Emacs) based around the idea of space k
 ## Think for yourself
 
 This way to use leader key fits _my_ workflow very well. It may or may not be as efficient in your case. Be critical of that "mappings every Vimmer should use" tips (and of this article as well). Try what works best for *you*, your fingers and your keyboard. If you're interested more in how I use Vim check out my [dotfiles](https://github.com/raindev/dotfiles) GitHub repo. Happy editing!
+
+It would be interesting to know how do you use leader key, join the [Reddit discussion](https://www.reddit.com/r/vim/comments/484isa/why_i_use_space_as_my_vim_leader_key/).
