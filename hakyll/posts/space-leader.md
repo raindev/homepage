@@ -5,7 +5,7 @@ date: February 27, 2016
 
 ###### (Written on December 12, 2015)
 
-# Why I use Space as my leader key
+# Why I use space as my Vim leader key
 
 One of the best Vim productivity boosts is to configure your leader key. What leader key does is it gives you a namespace for custom mappings. No default Vim mappings use leader key, so you're free to choose whatever shortcuts you like without worrying about conflicts with some predefined mappings. Considering this it makes sense to define custom mappings using leader key. It also facilitate remembering of shortcuts by providing mental separation for the ones you've crafted yourself. To activate a shortcut you just press leader key and than a specific mapping, e.g. I use `<leader>w` to save current file. Configuring such a mapping is quite easy: add `map <leader>w` to your .vimrc and you're done. Noticing things you do repeatedly working day-to-day in Vim and creating custom mappings for them will allow you to save a little bit of time constantly and will make editing with Vim more effortless.
 
