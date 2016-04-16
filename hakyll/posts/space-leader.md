@@ -2,8 +2,7 @@
 title: Space Leader
 date: February 27, 2016
 ---
-
-###### (Written on December 12, 2015)
+<small>_(written on December 12, 2015)_</small>
 
 # Why I use space as my Vim leader key
 
