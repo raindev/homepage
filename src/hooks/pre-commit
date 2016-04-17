@@ -1,0 +1,1 @@
+make && git add *.html *.xml css/ images/

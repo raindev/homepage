@@ -3,3 +3,6 @@ all:
 
 run:
 	cd src/ && cabal run -- watch
+
+hooks:
+	ln -s src/hooks/* .git/hooks/
