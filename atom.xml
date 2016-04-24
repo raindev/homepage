@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Thoughts and Opinions</title>
-    <link href="http://raindev.github.icloud.io/atom.xml" rel="self" />
-    <link href="http://raindev.github.icloud.io" />
-    <id>http://raindev.github.icloud.io/atom.xml</id>
+    <link href="http://raindev.io/atom.xml" rel="self" />
+    <link href="http://raindev.io" />
+    <id>http://raindev.io/atom.xml</id>
     <author>
         <name>Andrew Barchuk</name>
         <email>raindev@icloud.com</email>
@@ -11,8 +11,8 @@
     <updated>2016-02-27T00:00:00Z</updated>
     <entry>
     <title>Space Leader</title>
-    <link href="http://raindev.github.icloud.io/space-leader.html" />
-    <id>http://raindev.github.icloud.io/space-leader.html</id>
+    <link href="http://raindev.io/space-leader.html" />
+    <id>http://raindev.io/space-leader.html</id>
     <published>2016-02-27T00:00:00Z</published>
     <updated>2016-02-27T00:00:00Z</updated>
     <summary type="html"><![CDATA[<div class="info">

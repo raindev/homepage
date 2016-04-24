@@ -94,5 +94,5 @@ myFeedConfiguration = FeedConfiguration
     , feedDescription = "raindev's blog"
     , feedAuthorName  = "Andrew Barchuk"
     , feedAuthorEmail = "raindev@icloud.com"
-    , feedRoot        = "http://raindev.github.icloud.io"
+    , feedRoot        = "http://raindev.io"
     }
