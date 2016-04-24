@@ -78,12 +78,26 @@ main = hakyll $ do
                 loadAllSnapshots "posts/*" "content"
             renderRss myFeedConfiguration feedCtx posts
 
+    create ["sitemap.xml"] $ do
+        route idRoute
+        compile $ do
+            posts <- recentFirst =<< loadAll "posts/*"
+            let sitemapCtx =
+                    listField "posts" postCtx (return posts)  `mappend`
+                    defaultContext
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
+
 
 --------------------------------------------------------------------------------
+host = "http://raindev.io"
+
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
-    defaultContext
+    defaultContext               `mappend`
+    constField "host" host       `mappend`
+    modificationTimeField "lastmod" "%Y-%m-%d"
 
 pullUp :: (Identifier -> FilePath)
 pullUp = (head . tail . (splitOn "/")) . toFilePath
@@ -94,5 +108,5 @@ myFeedConfiguration = FeedConfiguration
     , feedDescription = "raindev's blog"
     , feedAuthorName  = "Andrew Barchuk"
     , feedAuthorEmail = "raindev@icloud.com"
-    , feedRoot        = "http://raindev.io"
+    , feedRoot        = host
     }
