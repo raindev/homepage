@@ -20,3 +20,5 @@ What I decided to do instead it to "get it posted". To start writing with an int
 How I decided to accomplish what I haven't been able to do? First, I'm already fed up with my inability to post. Motivation is the key and all of that. The fact that most of my friends have empty blogs do not help, I acknowledge. Reduce friction (you probably know that already): I started to edit a post template directly rather than a file somewhere so publish is literally one command. Do it fast: your energy won't last long. Edit immediately, but not during writing. I never got to edit most of my drafts. Some [deep house](https://open.spotify.com/user/spotify_germany/playlist/2nKFnGNFvHX9hG5Kv7Bm3G) may help, if that's your kind of thing. Oh yeah, shutdown your Internet.
 
 Finally, keep it short (one screen with large font). That's it. I hope you'll succeed one day as well.
+
+Bonus tip: you can edit posts _after_ you published them :P
