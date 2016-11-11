@@ -1,4 +1,4 @@
-dist/
+.stack-work/
 _site/
 _cache/
 *.hi

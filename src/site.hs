@@ -84,6 +84,7 @@ main = hakyll $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let sitemapCtx =
                     listField "posts" postCtx (return posts)  `mappend`
+                    constField "host" host `mappend`
                     defaultContext
             makeItem ""
                 >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx

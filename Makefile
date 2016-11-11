@@ -1,11 +1,11 @@
 all:
-	cd src/ && cabal run -- build && cp -r _site/ ..
+	cd src/ && stack exec site build && cp -r _site/ ..
 
 run:
-	cd src/ && cabal run -- watch
+	cd src/ && stack exec site watch
 
 clean:
-	cd src/ && cabal run -- clean
+	cd src/ && stack exec site clean
 
 hooks:
 	cp -n src/hooks/* .git/hooks/
