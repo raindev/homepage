@@ -1,21 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <title>Thoughts and Opinions</title>
-    <link href="http://raindev.io/atom.xml" rel="self" />
-    <link href="http://raindev.io" />
-    <id>http://raindev.io/atom.xml</id>
-    <author>
-        <name>Andrew Barchuk</name>
-        <email>raindev@icloud.com</email>
-    </author>
-    <updated>2016-11-21T00:00:00Z</updated>
-    <entry>
-    <title>Build Yourself Arch Linux</title>
-    <link href="http://raindev.io/build-yourself-arch-linux-1.html" />
-    <id>http://raindev.io/build-yourself-arch-linux-1.html</id>
-    <published>2016-11-21T00:00:00Z</published>
-    <updated>2016-11-21T00:00:00Z</updated>
-    <summary type="html"><![CDATA[<div class="info">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>raindev - Build Yourself Arch Linux</title>
+        <link rel="stylesheet" type="text/css" href="./css/default.css" />
+        <link rel="stylesheet" type"text css" href="./css/gh-fork-ribbon.css" />
+        <link rel="alternate" type="application/atom+xml" href="./atom.xml" title="Atom feed of raindev's blog">
+        <link rel="alternate" type="application/rss+xml" href="./rss.xml" title="RSS feed of raindev's blog">
+
+        <!-- Google Analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-38075720-2', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+    </head>
+    <body>
+         <a class="github-fork-ribbon" href="https://github.com/raindev" title="Fork me on GitHub">Fork me on GitHub</a>
+        <div id="header">
+            <div id="logo">
+                <a href="./">Thoughts and Opinions</a>
+            </div>
+            <div id="navigation">
+                <a href="./">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./archive.html">Archive</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Build Yourself Arch Linux</h1>
+
+            <div class="info">
     Posted on November 21, 2016
 </div>
 
@@ -56,79 +79,29 @@
 <p>In about a week or two I hope to post the second part of the guide. I’m going to focus on things like user and power management, wireless and continue to build the system upon the base I have.</p>
 <h2 id="credits">Credits</h2>
 <p>To write this guide I relied heavily on <a href="https://wiki.archlinux.org">ArchWiki</a>, and three tutorials by <a href="http://loicpefferkorn.net/2015/01/arch-linux-on-macbook-pro-retina-2014-with-dm-crypt-lvm-and-suspend-to-disk/#dm-crypt-and-lvm:385892e3ac2613dca78d22bd09dbae7d">Loïc Pefferkorn</a>, <a href="https://mchladek.me/post/arch-mbp/">Michael Chladek</a> and <a href="https://visual-assault.org/2016/03/05/install-encrypted-arch-linux-on-apple-macbook-pro/#boot-loader">Ron A.</a>.</p>
-]]></summary>
-</entry>
-<entry>
-    <title>Hash Collision</title>
-    <link href="http://raindev.io/hash-collision.html" />
-    <id>http://raindev.io/hash-collision.html</id>
-    <published>2016-11-20T00:00:00Z</published>
-    <updated>2016-11-20T00:00:00Z</updated>
-    <summary type="html"><![CDATA[<div class="info">
-    Posted on November 20, 2016
-</div>
 
-<h1 id="or-why-im-leaving-google">Or Why I’m Leaving Google</h1>
-<p>Recently there was a lot of <a href="https://news.ycombinator.com/item?id=12972554">talk</a> about Google services on Hacker News. Concerns people have about loosing control over their data prompted me to check out how I use Google.</p>
-<p>There’re a few reasons to worry: loosing your data, giving to much personal information to one company and having someone (or something) reading (or scanning) your private stuff. While I tried to limit my use of Google’s services in the past and moved off the major ones like Gmail, Calendar, Contacts there’s still a lot of my stuff on Google’s servers. Especially given my switch to Android about half a year ago.</p>
-<p>I was frightened a little bit when I realised that all of my photo archive is in Google Photos and I do not have any backups. While I do trust Google to store my data reliably, I do not want to be denied access to my entire photo collection because of conflict of interest with the company (or simply because of a natural disaster). I decided to download my photos using <a href="https://google.com/settings/takeout">Google Takeout</a> to have at least a local copy until I figure out how I’m going to back up my data properly and find another photo storage solution. I’m looking at Dropbox and Flickr now, Flickr should be more convenient, but Dropbox can be more private. Note how a privacy became a relative term nowadays.</p>
-<p>I was surprised how much Google knows about me. You’ll be surprised as well after exploring <a href="https://myaccount.google.com/privacy">privacy section</a> of your Google account settings. To name a few things: my apps usage and passwords, voice and web searches, location history and maps searches, YouTube viewing history, fitness data. That’s huge amount of personal information if you think about it. And that’s given I’m a pretty modest user of Google, there’re people keeping literally everything in Google’s services. Lots the stuff I’ve shared with Google is actually because I’ve tried to use my Nexus the Google way from on the beginning. You’d rather not agreed blindly to everything your new Android phone asks you about during setup. Thankfully, it’s possible to turn off most of the tracking but it takes effort.</p>
-<p>While reading about privacy in relation to Google’s services I’ve stumbled upon <a href="https://en.wikipedia.org/wiki/PhotoDNA">PhotoDNA</a>. The technology is used to scan images to detect unlawful activity like child pornography. And this technology (or something similar) is known to be employed by Google. While I’m totally for fight against child pornography, the particular methods used do worry me. Metaphorically speaking, I don’t want to get into troubles because of a <a href="https://en.wikipedia.org/wiki/Hash_collision">hash collision</a>. There’s always a chance that machine learning used for crime detection will give a false positive result, it will <em>never</em> be 100% accurate. Also, there’re bugs. I don’t want to be part of the game, I don’t want to engage with law enforcements because of a mistake made by an algorithm. I would rather give up some convenience and had my personal data encrypted in the cloud to have it never scanned regardless of intentions. Also with iOS 10 Apple <a href="http://www.macrumors.com/2016/06/15/see-ios-10s-new-photos-app-in-action/">showed</a> that it’s viable to employ machine learning locally (even on a phone) to give conveniences like categorization and face recognition which were usually associated with processing of photos in the cloud.</p>
-<p>Going forward I’m going to log in into Google account in my browser only when needed to not have myself constantly tracked on the web. Most of the services are perfectly functional without an account, like Translate, Maps, Search (I use it as a fallback for DuckDuckGo), even YouTube, despite completely crappy default recommendations. Also I’m thinking to create a separate accounts for the services I’ll continue to use like Alerts, Webmaster Tools and for my Android phone. Some services I’m going to ditch, like Analytics, Photos and Hangouts. To get my pictures off Google Photos will be the hardest but I’d like to do it.</p>
-<p>I’m not agitating you to leave Google services but be aware what information do you give away and remember to keep backups of your data. If the topic is of interest to you I’ll recommend <a href="https://www.philzimmermann.com/EN/essays/WhyIWrotePGP.html">a very good (despite quite old) article</a> about privacy and encryption by the author of <a href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy">GPG</a> Philip Zimmermann.</p>
-]]></summary>
-</entry>
-<entry>
-    <title>On Writer's Block</title>
-    <link href="http://raindev.io/writers-block.html" />
-    <id>http://raindev.io/writers-block.html</id>
-    <published>2016-11-11T00:00:00Z</published>
-    <updated>2016-11-11T00:00:00Z</updated>
-    <summary type="html"><![CDATA[<div class="info">
-    Posted on November 11, 2016
-</div>
-
-<p>If you’ll have a look on <a href="/archive.html">timeline</a> of this blog of mine it will be obvious that I’m dealing with writer’s block. I always wanted to have <em>real</em> blog, to do <code>git push</code> to publish, to build it <em>from scratch</em> myself. And about 9 month ago I got it. I found <a href="https://jaspervdj.be/hakyll/">Hakyll</a> which felt awesome, like assembling a model airplane from parts. I’ve refined it over couple of weeks and got what I wanted to have. The first post event caught some attention as I’ve decided to post it to Reddit. There has been both positive and negative <a href="https://www.reddit.com/r/vim/comments/484isa/why_i_use_space_as_my_vim_leader_key/">feedback</a>. But there will <em>always</em> be negative feedback, so it was fine.</p>
-<p>But than I stopped. Not that I stopped to write. I still drafted quite a few articles, had a few enlightening ideas of posts. But I never got to publish any of that. So I decided to <em>post</em> about writer’s block as I got to know what it is too well.</p>
-<p>How it usually was:</p>
-<ol style="list-style-type: decimal">
-<li>get excited</li>
-<li>type 500-100 words and get my thoughts out</li>
-<li>calm down, save the file</li>
-<li>whatever, I’ll edit it tomorrow</li>
-<li>the life goes on</li>
-</ol>
-<p>What I decided to do instead it to “get it posted”. To start writing with an intention to post. It doesn’t matter what the post will be about, whatever consumes my mind the most at the moment, get it <em>out</em>.</p>
-<p>How I decided to accomplish what I haven’t been able to do? First, I’m already fed up with my inability to post. Motivation is the key and all of that. The fact that most of my friends have empty blogs do not help, I acknowledge. Reduce friction (you probably know that already): I started to edit a post template directly rather than a file somewhere so publish is literally one command. Do it fast: your energy won’t last long. Edit immediately, but not during writing. I never got to edit most of my drafts. Some <a href="https://open.spotify.com/user/spotify_germany/playlist/2nKFnGNFvHX9hG5Kv7Bm3G">deep house</a> may help, if that’s your kind of thing. Oh yeah, shutdown your Internet.</p>
-<p>Finally, keep it short (one screen with large font). That’s it. I hope you’ll succeed one day as well.</p>
-<p>Bonus tip: you can edit posts <em>after</em> you published them :P</p>
-]]></summary>
-</entry>
-<entry>
-    <title>Space Leader</title>
-    <link href="http://raindev.io/space-leader.html" />
-    <id>http://raindev.io/space-leader.html</id>
-    <published>2016-02-27T00:00:00Z</published>
-    <updated>2016-02-27T00:00:00Z</updated>
-    <summary type="html"><![CDATA[<div class="info">
-    Posted on February 27, 2016
-</div>
-
-<p><small><em>(written on December 12, 2015)</em></small></p>
-<h1 id="why-i-use-space-as-my-vim-leader-key">Why I use space as my Vim leader key</h1>
-<p>One of the best Vim productivity boosts is to configure your leader key. What leader key does - it gives you a namespace for custom mappings. No default Vim mappings use leader key, so you’re free to choose whatever shortcuts you like without worrying about conflicts with some predefined mappings. Considering this it makes sense to define custom mappings using leader key. It also facilitates remembering of shortcuts by providing mental separation for the ones you’ve crafted yourself. To activate a shortcut you just press leader key and than a specific mapping, e.g. I use <code>&lt;leader&gt;w</code> to save current file. Configuring such a mapping is quite easy: add <code>map &lt;leader&gt;w</code> to your .vimrc and you’re done. Noticing things you do repeatedly working day-to-day in Vim and creating custom mappings for them will allow you to save a little bit of time constantly and will make editing with Vim more effortless.</p>
-<p>Lots of Vim tutorials recommend to use <code>,</code> as leader key. However I see a few benefits of using spacebar instead.</p>
-<h2 id="it-doesnt-override-any-default-vim-mappings">It doesn’t override any default Vim mappings</h2>
-<p>Contrary to <code>,</code>, which is used to move cursor to previous occurrence of a character navigated to using <code>t</code> or <code>f</code>, space doesn’t do any particularly useful in normal mode by default. Yes, it does move cursor to the next character, but the motion is already covered by <code>l</code> key anyway (or an arrow key if you like to use those). So we could safely override default space behaviour. <code>,</code> is quite important for my workflow on the opposite side.</p>
-<h2 id="space-is-easy-to-reach-to">Space is easy to reach to</h2>
-<p>Most of your custom mappings will use leader key, so it should be better easy to type. Spacebar is a huge key placed very conveniently on most keyboards. It’s a safe bet regarding ergonomics.</p>
-<h2 id="space-is-symmetrical">Space is symmetrical</h2>
-<p>This one alone is a good reason for me to use spacebar as my leader key. Given it’s <em>equally</em> easily reachable for <em>both hands</em>, space leaves me with all the alphanumeric keys as convenient shortcut options. Again in contrast to <code>,</code> which is typed by the right hand making left hand letters more comfortable options for typing shortcuts without stretching fingers.</p>
-<p>There’s even a text editor (a flavour of Emacs) based around the idea of space key as a gateway to all the editor commands called <a href="http://spacemacs.org">Spacemacs</a>. I’ve been playing around with it a little bit recently and it has been positive experience so far. Spacemacs goes one step further by providing instant visual feedback about available commands once you’ve pressed space key.</p>
-<h2 id="think-for-yourself">Think for yourself</h2>
-<p>This way to use leader key fits <em>my</em> workflow very well. It may or may not be as efficient in your case. Be critical of that “mappings every Vimmer should use” tips (and of this article as well). Try what works best for <em>you</em>, your fingers and your keyboard. If you’re interested more in how I use Vim check out my <a href="https://github.com/raindev/dotfiles">dotfiles</a> GitHub repo. Happy editing!</p>
-<p>It would be interesting to know how do you use leader key, join the <a href="https://www.reddit.com/r/vim/comments/484isa/why_i_use_space_as_my_vim_leader_key/">Reddit discussion</a>.</p>
-]]></summary>
-</entry>
-
-</feed>
+        </div>
+        <div id="footer">
+            <div id="license">
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+                <img alt="Creative Commons License" src="./images/by-nc-sa.svg" title="The content is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License" />
+              </a>
+            </div>
+            <div>
+                You could subscribe for the updates using
+                <a href="./atom.xml">Atom</a>
+                or
+                <a href="./rss.xml">RSS</a>
+                feed
+            </div>
+            <div>
+                Proudly generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>.
+                The website theme is inspired by
+                <a href="http://bettermotherfuckingwebsite.com">this website</a>
+            </div>
+            <div>
+                Credit for the portrait goes to <a href="https://instagram.com/ann_holovach">Hanna Holovach</a>
+            </div>
+        </div>
+    </body>
+</html>

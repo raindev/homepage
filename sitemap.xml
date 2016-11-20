@@ -26,10 +26,18 @@
 
 
     <url>
+        <loc>http://raindev.io/build-yourself-arch-linux-1.html</loc>
+        <changefreq>monthly</changefreq>
+
+        <lastmod>2016-11-21</lastmod>
+
+    </url>
+
+    <url>
         <loc>http://raindev.io/hash-collision.html</loc>
         <changefreq>monthly</changefreq>
 
-        <lastmod>2016-11-20</lastmod>
+        <lastmod>2016-11-21</lastmod>
 
     </url>
 
