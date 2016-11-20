@@ -7,8 +7,28 @@
         <description><![CDATA[raindev's blog]]></description>
         <atom:link href="http://raindev.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Fri, 11 Nov 2016 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sun, 20 Nov 2016 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Hash Collision</title>
+    <link>http://raindev.io/hash-collision.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on November 20, 2016
+</div>
+
+<h1 id="or-why-im-leaving-google">Or Why I’m Leaving Google</h1>
+<p>Recently there was a lot of <a href="https://news.ycombinator.com/item?id=12972554">talk</a> about Google services on Hacker News. Concerns people have about loosing control over their data prompted me to check out how I use Google.</p>
+<p>There’re a few reasons to worry: loosing your data, giving to much personal information to one company and having someone (or something) reading (or scanning) your private stuff. While I tried to limit my use of Google’s services in the past and moved off the major ones like Gmail, Calendar, Contacts there’s still a lot of my stuff on Google’s servers. Especially given my switch to Android about half a year ago.</p>
+<p>I was frightened a little bit when I realised that all of my photo archive is in Google Photos and I do not have any backups. While I do trust Google to store my data reliably, I do not want to be denied access to my entire photo collection because of conflict of interest with the company (or simply because of a natural disaster). I decided to download my photos using <a href="https://google.com/settings/takeout">Google Takeout</a> to have at least a local copy until I figure out how I’m going to back up my data properly and find another photo storage solution. I’m looking at Dropbox and Flickr now, Flickr should be more convenient, but Dropbox can be more private. Note how a privacy became a relative term nowadays.</p>
+<p>I was surprised how much Google knows about me. You’ll be surprised as well after exploring <a href="https://myaccount.google.com/privacy">privacy section</a> of your Google account settings. To name a few things: my apps usage and passwords, voice and web searches, location history and maps searches, YouTube viewing history, fitness data. That’s huge amount of personal information if you think about it. And that’s given I’m a pretty modest user of Google, there’re people keeping literally everything in Google’s services. Lots the stuff I’ve shared with Google is actually because I’ve tried to use my Nexus the Google way from on the beginning. You’d rather not agreed blindly to everything your new Android phone asks you about during setup. Thankfully, it’s possible to turn off most of the tracking but it takes effort.</p>
+<p>While reading about privacy in relation to Google’s services I’ve stumbled upon <a href="https://en.wikipedia.org/wiki/PhotoDNA">PhotoDNA</a>. The technology is used to scan images to detect unlawful activity like child pornography. And this technology (or something similar) is known to be employed by Google. While I’m totally for fight against child pornography, the particular methods used do worry me. Metaphorically speaking, I don’t want to get into troubles because of a <a href="https://en.wikipedia.org/wiki/Hash_collision">hash collision</a>. There’s always a chance that machine learning used for crime detection will give a false positive result, it will <em>never</em> be 100% accurate. Also, there’re bugs. I don’t want to be part of the game, I don’t want to engage with law enforcements because of a mistake made by an algorithm. I would rather give up some convenience and had my personal data encrypted in the cloud to have it never scanned regardless of intentions. Also with iOS 10 Apple <a href="http://www.macrumors.com/2016/06/15/see-ios-10s-new-photos-app-in-action/">showed</a> that it’s viable to employ machine learning locally (even on a phone) to give conveniences like categorization and face recognition which were usually associated with processing of photos in the cloud.</p>
+<p>Going forward I’m going to log in into Google account in my browser only when needed to not have myself constantly tracked on the web. Most of the services are perfectly functional without an account, like Translate, Maps, Search (I use it as a fallback for DuckDuckGo), even YouTube, despite completely crappy default recommendations. Also I’m thinking to create a separate accounts for the services I’ll continue to use like Alerts, Webmaster Tools and for my Android phone. Some services I’m going to ditch, like Analytics, Photos and Hangouts. To get my pictures off Google Photos will be the hardest but I’d like to do it.</p>
+<p>I’m not agitating you to leave Google services but be aware what information do you give away and remember to keep backups of your data. If the topic is of interest to you I’ll recommend <a href="https://www.philzimmermann.com/EN/essays/WhyIWrotePGP.html">a very good (despite quite old) article</a> about privacy and encryption by the author of <a href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy">GPG</a> Philip Zimmermann.</p>
+]]></description>
+    <pubDate>Sun, 20 Nov 2016 00:00:00 UT</pubDate>
+    <guid>http://raindev.io/hash-collision.html</guid>
+    <dc:creator>Andrew Barchuk</dc:creator>
+</item>
+<item>
     <title>On Writer's Block</title>
     <link>http://raindev.io/writers-block.html</link>
     <description><![CDATA[<div class="info">
