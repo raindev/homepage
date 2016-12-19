@@ -3,7 +3,7 @@ title: Hash Collision
 date: November 20, 2016
 ---
 
-# Or Why I'm Leaving Google
+# Or Why I'm Leaving Google's Services
 
 Recently there was a lot of [talk](https://news.ycombinator.com/item?id=12972554) about Google services on Hacker News. Concerns people have about loosing control over their data prompted me to check out how I use Google.
 
