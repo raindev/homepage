@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Archives - raindev</title>
+        <title>Build Yourself Arch Linux, Part 2 - raindev</title>
         <link rel="stylesheet" type="text/css" href="./css/default.css" />
         <link rel="stylesheet" type"text css" href="./css/gh-fork-ribbon.css" />
         <link rel="alternate" type="application/atom+xml" href="./atom.xml" title="Atom feed of raindev's blog">
@@ -36,33 +36,21 @@
         </div>
 
         <div id="content">
-            <h1>Archives</h1>
+            <h1>Build Yourself Arch Linux, Part 2</h1>
 
-            Here you can find all my previous posts:
-<ul>
+            <div class="info">
+    Posted on December 20, 2016
+</div>
 
-    <li>
-        <a href="./build-yourself-arch-linux-2.html">Build Yourself Arch Linux, Part 2</a> - December 20, 2016
-    </li>
-
-    <li>
-        <a href="./build-yourself-arch-linux-1.html">Build Yourself Arch Linux</a> - November 21, 2016
-    </li>
-
-    <li>
-        <a href="./hash-collision.html">Hash Collision</a> - November 20, 2016
-    </li>
-
-    <li>
-        <a href="./writers-block.html">On Writer's Block</a> - November 11, 2016
-    </li>
-
-    <li>
-        <a href="./space-leader.html">Space Leader</a> - February 27, 2016
-    </li>
-
-</ul>
-
+<h1 id="part-2">Part 2</h1>
+<p>This is the second part of series on articles about setting up Arch Linux on my MacBook. The main goal of this part is to make the installation actually useful to do some work. In some sense, I want to bootstrap the series of articles to be able to work on the posts under Linux.</p>
+<h2 id="unprivilleged-user">Unprivilleged user</h2>
+<p>It is <a href="https://apple.stackexchange.com/questions/192365/is-it-ok-to-use-the-root-user-as-a-normal-user/192422#192422">not a good idea</a> to use a computer as root user all the time. <a href="https://wiki.archlinux.org/index.php/Users_and_groups#User_management">Here</a> is how to create a new unprivilleger user and set its password.</p>
+<p><a href="https://wiki.archlinux.org/index.php/Sudo">sudo</a> is another recommended security measure. It is not preinstalled, you’ll need to get it with <code>pacman</code>. I used group <code>wheel</code> to give access to <code>sudo</code> so I added the newly created user to this group. <a href="https://wiki.archlinux.org/index.php/Sudo#Using_visudo"><code>visudo</code></a> can now be used to give the new user access to <code>sudo</code> command. Besides giving <code>wheel</code> members privilleged acess I also enabled reboot/shutdown to be performed withoug need for the password. To do that while editing <code>/etc/sudoers</code> I have uncommented the line with <code>Cmd_Alias</code> for <code>REBOOT</code> and added the following line:<code>raindev ALL= NOPASSWD: REBOOT</code>. Now I cand run <code>sudo poweroff</code> to shutdown my laptop and won’t be asked for the password. The same way user can be given a permission to execute different privilleged commands withouth a password.</p>
+<p>autologin</p>
+<h2 id="unplugging-the-laptop">Unplugging the laptop</h2>
+<p>wifi brightness and battery solarized theme</p>
+<h1 id="blogging-toolchain">Blogging toolchain</h1>
 
         </div>
         <div id="footer">
