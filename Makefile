@@ -1,5 +1,5 @@
 all:
-	cd src/ && stack exec site build && cp -r _site/ ..
+	cd src/ && stack exec site build && cp -r _site/* ..
 
 run:
 	cd src/ && stack exec site watch
