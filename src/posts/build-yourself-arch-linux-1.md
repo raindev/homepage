@@ -81,7 +81,7 @@ Be careful with doing anything while on battery as until suspend will be setup t
 
 If you will find any problems I've failed to mention or any mistakes while following this guide please email me about them and I'll update the post. I'll appreciate any suggestions for improvements.
 
-In about a week or two I hope to post the second part of the guide. I'm going to focus on things like user and power management, wireless and continue to build the system upon the base I have.
+In some time I hope to post the second part of the guide. I'm going to focus on things like user and power management, wireless and continue to build the system upon the base I have.
 
 ## Credits
 
