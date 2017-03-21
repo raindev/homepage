@@ -26,10 +26,18 @@
 
 
     <url>
+        <loc>http://raindev.io/paper.html</loc>
+        <changefreq>monthly</changefreq>
+
+        <lastmod>2017-03-21</lastmod>
+
+    </url>
+
+    <url>
         <loc>http://raindev.io/build-yourself-arch-linux-1.html</loc>
         <changefreq>monthly</changefreq>
 
-        <lastmod>2017-02-01</lastmod>
+        <lastmod>2017-03-21</lastmod>
 
     </url>
 
@@ -37,7 +45,7 @@
         <loc>http://raindev.io/hash-collision.html</loc>
         <changefreq>monthly</changefreq>
 
-        <lastmod>2017-01-08</lastmod>
+        <lastmod>2016-12-18</lastmod>
 
     </url>
 
@@ -45,7 +53,7 @@
         <loc>http://raindev.io/writers-block.html</loc>
         <changefreq>monthly</changefreq>
 
-        <lastmod>2016-12-13</lastmod>
+        <lastmod>2016-11-11</lastmod>
 
     </url>
 

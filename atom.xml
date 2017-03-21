@@ -8,8 +8,23 @@
         <name>Andrew Barchuk</name>
         <email>raindev@icloud.com</email>
     </author>
-    <updated>2016-11-21T00:00:00Z</updated>
+    <updated>2017-03-21T00:00:00Z</updated>
     <entry>
+    <title>Paper</title>
+    <link href="http://raindev.io/paper.html" />
+    <id>http://raindev.io/paper.html</id>
+    <published>2017-03-21T00:00:00Z</published>
+    <updated>2017-03-21T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<div class="info">
+    Posted on March 21, 2017
+</div>
+
+<p><small><em>(written on December 23, 2016)</em></small></p>
+<p>After trying almost (hello, org-mode) all digital solutions for organizing my life out there and spending hundreds of dollars and countless hours worth of time I’ve bought myself a paper notebook. And I’m happy that I did. I used to be a firm proponent of keeping one’s life digital as much as possible so it may sound like a strange decision. And indeed it is. Not that I’ve never used a paper notebook before. But it never was front and center of organizing my life.</p>
+<p>The notebook never get out of charge, never crashes, I’ll never lose my notes because of a bug in the synchronization. Simple things is what brings happiness.</p>
+]]></summary>
+</entry>
+<entry>
     <title>Build Yourself Arch Linux</title>
     <link href="http://raindev.io/build-yourself-arch-linux-1.html" />
     <id>http://raindev.io/build-yourself-arch-linux-1.html</id>
