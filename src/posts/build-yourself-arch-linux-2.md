@@ -3,7 +3,7 @@ title: "Build Yourself Arch Linux, Part 2"
 date: April 2, 2017
 ---
 
-# Part 2
+# Part 2: Getting Work Done from Console
 
 This is the second part of [the series of articles](https://raindev.io/build-yourself-arch-linux-1.html) about setting up Arch Linux on my MacBook. The main goal of this part is to make the installation actually useful to do some work. In some sense, I want to bootstrap the series to be able to work on the posts under Linux. Disclaimer: I won't get to setting up graphical environment in this part; while it's possible to do everything from this article _after_ installing a graphical environment, I've decided to try how far can I get without one.
 
@@ -105,7 +105,7 @@ To ease mounting of the backup USB stick I've added the following line to `/etc/
 
 See [instructions](https://wiki.archlinux.org/index.php/Mirrors#List_by_speed) how to rank pacman repository mirrors by speed. After obtaining list of fastest mirrors I've excluded all the mirrors that are not 100% synced accordingly to the [Mirror Status](https://www.archlinux.org/mirrors/status/) page. Also I have removed all the http sources. I have no doubts about Arch [package signing practices](https://wiki.archlinux.org/index.php/Pacman/Package_signing) but I don't like leaking my package usage habit in plain text. It might make an intruder's job easier if he will know exactly what versions of what software am I running and when do I update it.
 
-## pacman cleanup
+### pacman cleanup
 
 While I was experimenting with different packages some of transitive dependencies might be left behind. Fortunately, pacman remembers the reason for package installation. To query all the packages installed previously as dependencies do `pacman -Qdt`.
 
@@ -164,6 +164,10 @@ Pretty much boils down to installing `rustup` which is available from the offici
 I'd like to change GNU screen's command prefix to Ctrl-I as it is on the home row of Workman layout (unlike Ctrl-J) but for some reason Tab gets intercepted in that case and do not work for bash completion.
 
 To reconnect to different WiFi network `wifi-menu` should be used. `netctl start <profile>` fails because interface is already up.
+
+## Conclusions
+
+Getting some work done from virtual console is definitely possible and it's definitely useful to be able to do so. A lot of things work in a different way in the virtual console and you'll have to adapt (e.g. scrolling back, copying-pasting, working with multiple shells) but it's not that inconvenient once you've learned your way around. I'll probably use a graphical terminal emulator even for my command line work from now on. Main limitation I've run into is unavailability of large bitmap fonts. Even the largest I've found so far (Terminus 32) is a bit too small for me. Going further this route I'd probably needed to make my own console fonts. I've got an impression that it would be more convenient to work with a virtual console on a desktop because of availability of full size keyboard (scollback e.g. relies on PageUp/PageDown keys) and lower screen pixel density.
 
 ## Credits
 

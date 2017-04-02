@@ -42,7 +42,7 @@
     Posted on April  2, 2017
 </div>
 
-<h1 id="part-2">Part 2</h1>
+<h1 id="part-2-getting-work-done-from-console">Part 2: Getting Work Done from Console</h1>
 <p>This is the second part of <a href="https://raindev.io/build-yourself-arch-linux-1.html">the series of articles</a> about setting up Arch Linux on my MacBook. The main goal of this part is to make the installation actually useful to do some work. In some sense, I want to bootstrap the series to be able to work on the posts under Linux. Disclaimer: I won’t get to setting up graphical environment in this part; while it’s possible to do everything from this article <em>after</em> installing a graphical environment, I’ve decided to try how far can I get without one.</p>
 <h2 id="unprivileged-user">Unprivileged user</h2>
 <p>It is <a href="https://apple.stackexchange.com/questions/192365/is-it-ok-to-use-the-root-user-as-a-normal-user/192422#192422">not a good idea</a> to use a computer as root user all the time. <a href="https://wiki.archlinux.org/index.php/Users_and_groups#User_management">Here</a> is how to create a new unprivileged user and set its password. Beware that a user’s home directory is created from a template called skeleton and the default skeleton (<code>/etc/skel</code>) contains only a few basic dotfiles templates like <code>.bashrc</code>. It may be confusing if you used to see bunch of predefined media directories in your home catalogue.</p>
@@ -93,7 +93,7 @@
 <h2 id="package-management">Package management</h2>
 <h3 id="pacman-mirrors">pacman mirrors</h3>
 <p>See <a href="https://wiki.archlinux.org/index.php/Mirrors#List_by_speed">instructions</a> how to rank pacman repository mirrors by speed. After obtaining list of fastest mirrors I’ve excluded all the mirrors that are not 100% synced accordingly to the <a href="https://www.archlinux.org/mirrors/status/">Mirror Status</a> page. Also I have removed all the http sources. I have no doubts about Arch <a href="https://wiki.archlinux.org/index.php/Pacman/Package_signing">package signing practices</a> but I don’t like leaking my package usage habit in plain text. It might make an intruder’s job easier if he will know exactly what versions of what software am I running and when do I update it.</p>
-<h2 id="pacman-cleanup">pacman cleanup</h2>
+<h3 id="pacman-cleanup">pacman cleanup</h3>
 <p>While I was experimenting with different packages some of transitive dependencies might be left behind. Fortunately, pacman remembers the reason for package installation. To query all the packages installed previously as dependencies do <code>pacman -Qdt</code>.</p>
 <p>By default pacman will keep all the packages that were installed at some point of time. It makes sense to clean them up sometimes. There’s a handy script for exactly this task called <a href="https://wiki.archlinux.org/index.php/Pacman#Cleaning_the_package_cache"><code>paccache</code></a>. I’m not low on disk by any means, it doesn’t make sense for me to clean the cache aggressively. It’s there for a reason after all (e.g. I may need to downgrade a package which is much easier having it in the cache). It’s possible to clean up only uninstalled packages, that’s what I did. The trick is you’ll have to tell <code>paccache</code> to keep 0 versions of package (see <code>-h</code> on details) otherwise it will not remove all the uninstalled package versions.</p>
 <h2 id="security">Security</h2>
@@ -127,6 +127,8 @@
 <h2 id="caveats">Caveats</h2>
 <p>I’d like to change GNU screen’s command prefix to Ctrl-I as it is on the home row of Workman layout (unlike Ctrl-J) but for some reason Tab gets intercepted in that case and do not work for bash completion.</p>
 <p>To reconnect to different WiFi network <code>wifi-menu</code> should be used. <code>netctl start &lt;profile&gt;</code> fails because interface is already up.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>Getting some work done from virtual console is definitely possible and it’s definitely useful to be able to do so. A lot of things work in a different way in the virtual console and you’ll have to adapt (e.g. scrolling back, copying-pasting, working with multiple shells) but it’s not that inconvenient once you’ve learned your way around. I’ll probably use a graphical terminal emulator even for my command line work from now on. Main limitation I’ve run into is unavailability of large bitmap fonts. Even the largest I’ve found so far (Terminus 32) is a bit too small for me. Going further this route I’d probably needed to make my own console fonts. I’ve got an impression that it would be more convenient to work with a virtual console on a desktop because of availability of full size keyboard (scollback e.g. relies on PageUp/PageDown keys) and lower screen pixel density.</p>
 <h2 id="credits">Credits</h2>
 <p>As well as in the first part of the guide I’ve relied heavily on <a href="https://wiki.archlinu.org/">ArchWiki</a> in particular <a href="https://wiki.archlinux.org/index.php/General_recommendations">General recommendations section</a>.</p>
 
