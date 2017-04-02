@@ -5,7 +5,7 @@ date: April 2, 2017
 
 # Part 2
 
-This is the second part of the series of articles about setting up Arch Linux on my MacBook. The main goal of this part is to make the installation actually useful to do some work. In some sense, I want to bootstrap the series to be able to work on the posts under Linux. Disclaimer: I won't get to setting up graphical environment in this part; while it's possible to do everything from this article _after_ installing a graphical environment, I've decided to try how far can I get without one.
+This is the second part of [the series of articles](https://raindev.io/build-yourself-arch-linux-1.html) about setting up Arch Linux on my MacBook. The main goal of this part is to make the installation actually useful to do some work. In some sense, I want to bootstrap the series to be able to work on the posts under Linux. Disclaimer: I won't get to setting up graphical environment in this part; while it's possible to do everything from this article _after_ installing a graphical environment, I've decided to try how far can I get without one.
 
 ## Unprivileged user
 

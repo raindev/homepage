@@ -16,7 +16,7 @@
 </div>
 
 <h1 id="part-2">Part 2</h1>
-<p>This is the second part of the series of articles about setting up Arch Linux on my MacBook. The main goal of this part is to make the installation actually useful to do some work. In some sense, I want to bootstrap the series to be able to work on the posts under Linux. Disclaimer: I won’t get to setting up graphical environment in this part; while it’s possible to do everything from this article <em>after</em> installing a graphical environment, I’ve decided to try how far can I get without one.</p>
+<p>This is the second part of <a href="https://raindev.io/build-yourself-arch-linux-1.html">the series of articles</a> about setting up Arch Linux on my MacBook. The main goal of this part is to make the installation actually useful to do some work. In some sense, I want to bootstrap the series to be able to work on the posts under Linux. Disclaimer: I won’t get to setting up graphical environment in this part; while it’s possible to do everything from this article <em>after</em> installing a graphical environment, I’ve decided to try how far can I get without one.</p>
 <h2 id="unprivileged-user">Unprivileged user</h2>
 <p>It is <a href="https://apple.stackexchange.com/questions/192365/is-it-ok-to-use-the-root-user-as-a-normal-user/192422#192422">not a good idea</a> to use a computer as root user all the time. <a href="https://wiki.archlinux.org/index.php/Users_and_groups#User_management">Here</a> is how to create a new unprivileged user and set its password. Beware that a user’s home directory is created from a template called skeleton and the default skeleton (<code>/etc/skel</code>) contains only a few basic dotfiles templates like <code>.bashrc</code>. It may be confusing if you used to see bunch of predefined media directories in your home catalogue.</p>
 <h3 id="sudo">sudo</h3>
@@ -130,7 +130,7 @@
 </div>
 
 <h1 id="part-1-base-system">Part 1: Base System</h1>
-<p>This is the first part of (hopefully) series of articles on how I set up dual boot Arch Linux on my Mid 2014 MacBook Pro. At the end of this part I’ll have a bootable but completely minimal installation of Arch on an encrypted partition without any tuning. Ability to boot to Mac OS will be preserved.</p>
+<p>This is the first part of <a href="https://raindev.io/build-yourself-arch-linux-2.html">a series of articles</a> on how I set up dual boot Arch Linux on my Mid 2014 MacBook Pro. At the end of this part I’ll have a bootable but completely minimal installation of Arch on an encrypted partition without any tuning. Ability to boot to Mac OS will be preserved.</p>
 <h3 id="updates">Updates</h3>
 <p>December 11, 2016: clarify how to customize list of installed base package; add instructions how to start wired network automatically; describe a separate <code>/data</code> partition.</p>
 <p>January 8, 2017: provide fix for startup hang caused by dhcpcd systemd service; add mkinitcpio hook for USB keyboard detection; use larger console font.</p>
