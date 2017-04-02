@@ -164,3 +164,7 @@ Pretty much boils down to installing `rustup` which is available from the offici
 I'd like to change GNU screen's command prefix to Ctrl-I as it is on the home row of Workman layout (unlike Ctrl-J) but for some reason Tab gets intercepted in that case and do not work for bash completion.
 
 To reconnect to different WiFi network `wifi-menu` should be used. `netctl start <profile>` fails because interface is already up.
+
+## Credits
+
+As well as in the first part of the guide I've relied heavily on [ArchWiki](https://wiki.archlinu.org/) in particular [General recommendations section](https://wiki.archlinux.org/index.php/General_recommendations).

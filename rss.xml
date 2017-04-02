@@ -100,6 +100,8 @@
 <h2 id="caveats">Caveats</h2>
 <p>I’d like to change GNU screen’s command prefix to Ctrl-I as it is on the home row of Workman layout (unlike Ctrl-J) but for some reason Tab gets intercepted in that case and do not work for bash completion.</p>
 <p>To reconnect to different WiFi network <code>wifi-menu</code> should be used. <code>netctl start &lt;profile&gt;</code> fails because interface is already up.</p>
+<h2 id="credits">Credits</h2>
+<p>As well as in the first part of the guide I’ve relied heavily on <a href="https://wiki.archlinu.org/">ArchWiki</a> in particular <a href="https://wiki.archlinux.org/index.php/General_recommendations">General recommendations section</a>.</p>
 ]]></description>
     <pubDate>Sun, 02 Apr 2017 00:00:00 UT</pubDate>
     <guid>http://raindev.io/build-yourself-arch-linux-2.html</guid>
