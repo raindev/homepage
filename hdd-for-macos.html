@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Archives - raindev</title>
+        <title>How to Partition an External Hard Drive for macOS - raindev</title>
         <link rel="stylesheet" type="text/css" href="./css/default.css" />
         <link rel="stylesheet" type"text css" href="./css/gh-fork-ribbon.css" />
         <link rel="alternate" type="application/atom+xml" href="./atom.xml" title="Atom feed of raindev's blog">
@@ -36,45 +36,21 @@
         </div>
 
         <div id="content">
-            <h1>Archives</h1>
+            <h1>How to Partition an External Hard Drive for macOS</h1>
 
-            Here you can find all my previous posts:
-<ul>
+            <div class="info">
+    Posted on June 15, 2017
+</div>
 
-    <li>
-        <a href="./hdd-for-macos.html">How to Partition an External Hard Drive for macOS</a> - June 15, 2017
-    </li>
-
-    <li>
-        <a href="./whatsapp-tunneling.html">What's Wrong with WhatsApp Message Tunneling</a> - May  7, 2017
-    </li>
-
-    <li>
-        <a href="./build-yourself-arch-linux-2.html">Build Yourself Arch Linux, Part 2</a> - April  2, 2017
-    </li>
-
-    <li>
-        <a href="./paper.html">Paper</a> - March 21, 2017
-    </li>
-
-    <li>
-        <a href="./build-yourself-arch-linux-1.html">Build Yourself Arch Linux</a> - November 21, 2016
-    </li>
-
-    <li>
-        <a href="./hash-collision.html">Hash Collision</a> - November 20, 2016
-    </li>
-
-    <li>
-        <a href="./writers-block.html">On Writer's Block</a> - November 11, 2016
-    </li>
-
-    <li>
-        <a href="./space-leader.html">Space Leader</a> - February 27, 2016
-    </li>
-
-</ul>
-
+<p>TL;DR macOS expects 200 MB EFI System partition in the beginning of a hard drive, don’t like unformatted partitions and creates 128 MB Apple boot partitions after each real partition whenever you format it.</p>
+<p>I needed to partition an external hard drive to be usable on macOS (for <a href="https://en.wikipedia.org/wiki/Time_Machine_(macOS)">Time Machine</a> backups). I’ve partitioned the drive using <a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">GPT</a> scheme and created one unformatted Apple HFS/HFS+ partition on Arch Linux using <a href="https://wiki.archlinux.org/index.php/Fdisk">fdisk</a>. It was not recognized (the inserted disk is not readable dialogue), nor was I able to format the partition (with “Media kit reports not enough space on device” error) which was shown as full in the Disk Utility. When I have formatted the partition (using mkfs.hfsplus from <a href="https://www.archlinux.org/packages/community/x86_64/hfsprogs/">hfsprogs</a>) the partition was recognized but I was unable to initialize it for Time Machine or format with the same error as before. Finally I have partitioned the drive from macOS and created a new partition. Looking at the drive with fdisk I’ve discovered that EFI System partition was created in the beginning of the disk with size of 200MB. When I have recreated the same partitioning layout using fdisk it was recognized properly. After setting up Time Machine backups on the created partition I have inspected the disk once more. The partition type was changed to Apple core storage and a 128 MB partition was created after it. When I created another partition for the second MacBook I got one more 125 MB Apple boot partition. The resulting partition table was:</p>
+<pre><code>Device         Start       End   Sectors  Size Type
+/dev/sdb1       2048    411647    409600  200M EFI System
+/dev/sdb2     411648 268847103 268435456  128G Apple Core storage
+/dev/sdb3  268847104 269109247    262144  128M Apple boot
+/dev/sdb4  269109248 478824447 209715200  100G Apple Core storage
+/dev/sdb5  478824448 479086591    262144  128M Apple boot</code></pre>
+<p>So 5 partitions instead of 2 I actually needed. <a href="https://developer.apple.com/library/content/technotes/tn2166/_index.html#//apple_ref/doc/uid/DTS10003927-CH1-SUBSECTION5">Here</a> Apple’s partitioning policy can be found describing when additional partitions are created with some justifications trying to answer why they are needed.</p>
 
         </div>
         <div id="footer">
