@@ -156,6 +156,7 @@
 <p>Getting some work done from virtual console is definitely possible and it’s definitely useful to be able to do so. A lot of things work in a different way in the virtual console and you’ll have to adapt (e.g. scrolling back, copying-pasting, working with multiple shells) but it’s not that inconvenient once you’ve learned your way around. I’ll probably use a graphical terminal emulator even for my command line work from now on. Main limitation I’ve run into is unavailability of large bitmap fonts. Even the largest I’ve found so far (Terminus 32) is a bit too small for me. Going further this route I’d probably needed to make my own console fonts. I’ve got an impression that it would be more convenient to work with a virtual console on a desktop because of availability of full size keyboard (scollback e.g. relies on PageUp/PageDown keys) and lower screen pixel density.</p>
 <h2 id="credits">Credits</h2>
 <p>As well as in the first part of the guide I’ve relied heavily on <a href="https://wiki.archlinu.org/">ArchWiki</a> in particular <a href="https://wiki.archlinux.org/index.php/General_recommendations">General recommendations section</a>.</p>
+<p><img src="/images/console.jpg" style="width: 100%" /></p>
 ]]></description>
     <pubDate>Sun, 02 Apr 2017 00:00:00 UT</pubDate>
     <guid>http://raindev.io/build-yourself-arch-linux-2.html</guid>
