@@ -154,6 +154,7 @@ Nothing fancy here, just a few small and useful programs I've installed along th
 - `shellcheck` - check shell scripts for common pitfalls and mistakes
 - `pacutils` - provides `paccheck` utility to see what pacman packages were modified after installation
 - `pkgstats` - help Arch Linux maintainers by sharing anonymous package usage stats. I had to mask its systemd timer (`systemctl mask pkgstats.timer` to disable automatic uploads of the reports.
+- `wget` - command-line file downloader
 
 ## Rust
 
