@@ -26,6 +26,14 @@
 
 
     <url>
+        <loc>http://raindev.io/build-yourself-arch-linux-3.html</loc>
+        <changefreq>monthly</changefreq>
+
+        <lastmod>2017-10-11</lastmod>
+
+    </url>
+
+    <url>
         <loc>http://raindev.io/hdd-for-macos.html</loc>
         <changefreq>monthly</changefreq>
 
