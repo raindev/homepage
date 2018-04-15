@@ -8,9 +8,9 @@ website](http://bettermotherfuckingwebsite.com). The GitHub CSS ribbon is from
 All the source of the blog resides inside [src/](src), all the published
 content is in the top level directory.
 
-To build the site you should [install
-Hakyll](https://jaspervdj.be/hakyll/tutorials/01-installation.html) first and
-execute `make`. To run the site locally use `make run`.
+## Building
+
+You should setup the environment first with `make setup` To build the site run `make`. To run the site locally use `make run`.
 
 ## Licenses
 
