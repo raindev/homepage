@@ -47,3 +47,5 @@ The email and other work-specific configuration will be placed in `~/.gitconfig.
 ## Bonus: repository specific configuration
 
 If for some reason you need to change Git configuration only for a single repository for some reason it can be done by editing `.git/config` file or simply with `git config` (no `--global` flag this time).
+
+If you're curious about my dotfiles feel free to check out [the GitHub repository](https://github.com/raindev/dotfiles).

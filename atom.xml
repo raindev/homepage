@@ -40,6 +40,7 @@
 <p>The email and other work-specific configuration will be placed in <code>~/.gitconfig.work</code>. Note that having a trailing <code>/</code> after the directory name is important. Now Git won’t apply the work-related configuration to your personal dotfiles repository in <code>~/dotfiles/</code> but will do that for <code>~/work/webapp/</code>.</p>
 <h2 id="bonus-repository-specific-configuration">Bonus: repository specific configuration</h2>
 <p>If for some reason you need to change Git configuration only for a single repository for some reason it can be done by editing <code>.git/config</code> file or simply with <code>git config</code> (no <code>--global</code> flag this time).</p>
+<p>If you’re curious about my dotfiles feel free to check out <a href="https://github.com/raindev/dotfiles">the GitHub repository</a>.</p>
 ]]></summary>
 </entry>
 <entry>
