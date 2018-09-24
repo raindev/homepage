@@ -26,6 +26,14 @@
 
 
     <url>
+        <loc>http://raindev.io/detecting-jvm-oome.html</loc>
+        <changefreq>monthly</changefreq>
+
+        <lastmod>2018-09-24</lastmod>
+
+    </url>
+
+    <url>
         <loc>http://raindev.io/granular-git-configuration.html</loc>
         <changefreq>monthly</changefreq>
 
