@@ -1,5 +1,5 @@
 <ul>
-    {% set section = get_section(path="_index.md") %}
+    {% set section = get_section(path="blog/_index.md") %}
     {% for page in section.pages %}
     <li>
         <a href="{{ page.permalink }}">{{ page.title }}</a> - {{ page.date }}
