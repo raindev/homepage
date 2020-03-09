@@ -1,0 +1,8 @@
+<ul>
+    {% set section = get_section(path="_index.md") %}
+    {% for page in section.pages %}
+    <li>
+        <a href="{{ page.permalink }}">{{ page.title }}</a> - {{ page.date }}
+    </li>
+    {% endfor %}
+</ul>
