@@ -1,7 +1,6 @@
 +++
 title = "About"
-path = "about.html"
-template = "top.html"
+aliases = [ "about.html" ]
 +++
 
 Curious programmer. Enthusiast. Thinker. Reader. Listener. Observer. Minimalist

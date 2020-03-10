@@ -1,7 +1,6 @@
 +++
 title = "Contact"
-path = "contact.html"
-template = "top.html"
+aliases = [ "contact.html" ]
 +++
 
 The best way to contact me is [email](mailto:andrew@raindev.io). For a quick
