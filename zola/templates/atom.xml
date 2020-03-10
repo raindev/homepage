@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>{{ config.title }}</title>
+    <subtitle>{{ config.description }}</subtitle>
+    <link href="http://raindev.io/atom.xml" rel="self" />
+    <link href="{{ config.base_url }}" />
+    <id>http://raindev.io/atom.xml</id>
+    <author>
+        <name>Andrew Barchuk</name>
+        <email>andrew@raindev.io</email>
+    </author>
+    {% set section = get_section(path="blog/_index.md") %}
+    <updated>{{ section.pages.0.date | date(format="%+") }}</updated>
+    {% for page in section.pages %}
+    <entry>
+        <title>{{ page.title }}</title>
+        <link href="{{ page.permalink | escape_xml | safe }}"/>
+        <id>{{ page.permalink | escape_xml | safe }}</id>
+        <published>{{ page.date | date(format="%+") }}</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">{{ page.content }}</content>
+    </entry>
+    {% endfor %}
+</feed>
