@@ -2,7 +2,7 @@
     {% set section = get_section(path="blog/_index.md") %}
     {% for page in section.pages %}
     <li>
-        <a href="{{ page.permalink }}">{{ page.title }}</a> - {{ page.date }}
+        <a href="{{ page.permalink }}">{{ page.title }}</a> - {{ page.date | date(format="%B %-d, %Y") }}
     </li>
     {% endfor %}
 </ul>
