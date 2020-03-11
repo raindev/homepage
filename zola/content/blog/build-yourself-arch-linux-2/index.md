@@ -176,4 +176,4 @@ Getting some work done from virtual console is definitely possible and it's defi
 As well as in the first part of the guide I've relied heavily on [ArchWiki](https://wiki.archlinu.org/) in particular [General recommendations section](https://wiki.archlinux.org/index.php/General_recommendations).
 
 
-<img src="/images/console.jpg" style="width: 100%" />
+<img src="console.jpg" style="width: 100%" />
