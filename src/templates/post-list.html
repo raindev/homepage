@@ -1,7 +1,8 @@
 <ul>
-$for(posts)$
+    {% set section = get_section(path="blog/_index.md") %}
+    {% for page in section.pages %}
     <li>
-        <a href="$url$">$title$</a> - $date$
+        <a href="{{ page.permalink }}">{{ page.title }}</a> - {{ page.date | date(format="%B %-d, %Y") }}
     </li>
-$endfor$
+    {% endfor %}
 </ul>

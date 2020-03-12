@@ -1,5 +1,9 @@
+{% extends "default.html" %}
+
+{% block content %}
 <div class="info">
-    Posted on $date$
+    Posted on {{ page.date }}
 </div>
 
-$body$
+{{ page.content | safe }}
+{% endblock %}

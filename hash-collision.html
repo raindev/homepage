@@ -1,79 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Hash Collision - raindev</title>
-        <link rel="stylesheet" type="text/css" href="./css/default.css" />
-        <link rel="stylesheet" type"text css" href="./css/gh-fork-ribbon.css" />
-        <link rel="alternate" type="application/atom+xml" href="./atom.xml" title="Atom feed of raindev's blog">
-        <link rel="alternate" type="application/rss+xml" href="./rss.xml" title="RSS feed of raindev's blog">
-
-        <!-- Google Analytics -->
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-38075720-2', 'auto');
-            ga('send', 'pageview');
-
-        </script>
+        <link rel="canonical" href="https://raindev.io/blog/hash-collision/" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="refresh" content="0;url=https://raindev.io/blog/hash-collision/" />
     </head>
-    <body>
-         <a class="github-fork-ribbon" href="https://github.com/raindev" title="Fork me on GitHub">Fork me on GitHub</a>
-        <div id="header">
-            <div id="logo">
-                <a href="./">Thoughts and Opinions</a>
-            </div>
-            <div id="navigation">
-                <a href="./">Home</a>
-                <a href="./about.html">About</a>
-                <a href="./contact.html">Contact</a>
-                <a href="./archive.html">Archive</a>
-            </div>
-        </div>
-
-        <div id="content">
-            <h1>Hash Collision</h1>
-
-            <div class="info">
-    Posted on November 20, 2016
-</div>
-
-<h1 id="or-why-im-leaving-googles-services">Or Why I’m Leaving Google’s Services</h1>
-<p>Recently there was a lot of <a href="https://news.ycombinator.com/item?id=12972554">talk</a> about Google services on Hacker News. Concerns people have about loosing control over their data prompted me to check out how I use Google.</p>
-<p>There’re a few reasons to worry: loosing your data, giving to much personal information to one company and having someone (or something) reading (or scanning) your private stuff. While I tried to limit my use of Google’s services in the past and moved off the major ones like Gmail, Calendar, Contacts there’s still a lot of my stuff on Google’s servers. Especially given my switch to Android about half a year ago.</p>
-<p>I was frightened a little bit when I realised that all of my photo archive is in Google Photos and I do not have any backups. While I do trust Google to store my data reliably, I do not want to be denied access to my entire photo collection because of conflict of interest with the company (or simply because of a natural disaster). I decided to download my photos using <a href="https://google.com/settings/takeout">Google Takeout</a> to have at least a local copy until I figure out how I’m going to back up my data properly and find another photo storage solution. I’m looking at Dropbox and Flickr now, Flickr should be more convenient, but Dropbox can be more private. Note how a privacy became a relative term nowadays.</p>
-<p>I was surprised how much Google knows about me. You’ll be surprised as well after exploring <a href="https://myaccount.google.com/privacy">privacy section</a> of your Google account settings. To name a few things: my apps usage and passwords, voice and web searches, location history and maps searches, YouTube viewing history, fitness data. That’s huge amount of personal information if you think about it. And that’s given I’m a pretty modest user of Google, there’re people keeping literally everything in Google’s services. Lots the stuff I’ve shared with Google is actually because I’ve tried to use my Nexus the Google way from on the beginning. You’d rather not agreed blindly to everything your new Android phone asks you about during setup. Thankfully, it’s possible to turn off most of the tracking but it takes effort.</p>
-<p>While reading about privacy in relation to Google’s services I’ve stumbled upon <a href="https://en.wikipedia.org/wiki/PhotoDNA">PhotoDNA</a>. The technology is used to scan images to detect unlawful activity like child pornography. And this technology (or something similar) is known to be employed by Google. While I’m totally for fight against child pornography, the particular methods used do worry me. Metaphorically speaking, I don’t want to get into troubles because of a <a href="https://en.wikipedia.org/wiki/Hash_collision">hash collision</a>. There’s always a chance that machine learning used for crime detection will give a false positive result, it will <em>never</em> be 100% accurate. Also, there’re bugs. I don’t want to be part of the game, I don’t want to engage with law enforcements because of a mistake made by an algorithm. I would rather give up some convenience and had my personal data encrypted in the cloud to have it never scanned regardless of intentions. Also with iOS 10 Apple <a href="http://www.macrumors.com/2016/06/15/see-ios-10s-new-photos-app-in-action/">showed</a> that it’s viable to employ machine learning locally (even on a phone) to give conveniences like categorization and face recognition which were usually associated with processing of photos in the cloud.</p>
-<p>(Hash is a supposedly unique fixed size value associated with some input. But because there is limited number of fixed size values and unlimited number of inputs, inevitably some different inputs will be associated with the same hashes. That’s called hash collision. The same basic idea applies to PhotoDNA: two different pictures, one ill and one not, will trigger the same result given large number of samples and an imprecise system, which machine learning always is.)</p>
-<p>Going forward I’m going to log in into Google account in my browser only when needed to not have myself constantly tracked on the web. Most of the services are perfectly functional without an account, like Translate, Maps, Search (I use it as a fallback for DuckDuckGo), even YouTube, despite completely crappy default recommendations. Also I’m thinking to create a separate accounts for the services I’ll continue to use like Alerts, Webmaster Tools and for my Android phone. Some services I’m going to ditch, like Analytics, Photos and Hangouts. To get my pictures off Google Photos will be the hardest but I’d like to do it.</p>
-<p>I’m not agitating you to leave Google services but be aware what information do you give away and remember to keep backups of your data. If the topic is of interest to you I’ll recommend <a href="https://www.philzimmermann.com/EN/essays/WhyIWrotePGP.html">a very good (despite quite old) article</a> about privacy and encryption by the author of <a href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy">GPG</a> Philip Zimmermann.</p>
-
-        </div>
-        <div id="footer">
-            <div id="license">
-              <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
-                <img alt="Creative Commons License" src="./images/by-nc-sa.svg" title="The content is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License" />
-              </a>
-            </div>
-            <div>
-                You could subscribe for the updates using
-                <a href="./atom.xml">Atom</a>
-                or
-                <a href="./rss.xml">RSS</a>
-                feed
-            </div>
-            <div>
-                Proudly generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>.
-                The website theme is inspired by
-                <a href="http://bettermotherfuckingwebsite.com">this website</a>
-            </div>
-            <div>
-                Credit for the portrait goes to <a href="https://instagram.com/ann_holovach">Hanna Holovach</a>
-            </div>
-        </div>
-    </body>
 </html>
