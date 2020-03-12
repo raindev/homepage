@@ -6,7 +6,7 @@ aliases = [ "build-yourself-arch-linux-2.html" ]
 
 # Part 2: Getting Work Done from Console
 
-This is the second part of the series of articles ([part 1](/build-yourself-arch-linux-1.html), [part 3](/build-yourself-arch-linux-3.html)) about setting up Arch Linux on my MacBook. The main goal of this part is to make the installation actually useful to do some work. In some sense, I want to bootstrap the series to be able to work on the posts under Linux. Disclaimer: I won't get to setting up graphical environment in this part; while it's possible to do everything from this article _after_ installing a graphical environment, I've decided to try how far can I get without one.
+This is the second part of the series of articles ([part 1](@/blog/build-yourself-arch-linux-1.md), [part 3](@/blog/build-yourself-arch-linux-3.md)) about setting up Arch Linux on my MacBook. The main goal of this part is to make the installation actually useful to do some work. In some sense, I want to bootstrap the series to be able to work on the posts under Linux. Disclaimer: I won't get to setting up graphical environment in this part; while it's possible to do everything from this article _after_ installing a graphical environment, I've decided to try how far can I get without one.
 
 ## Unprivileged user
 
@@ -88,7 +88,7 @@ The drawback is that closing lid to suspend will no longer work. If you want to 
 
 ## Network autoconfiguration
 
-I have noticed (using `juornalctl -p3 -b`) that there's a timeout error when trying to start Ethernet adapter device (`sys-subsystem-net-devices-enp0s20u1.device`). Using `systemctl list-dependencies --reverse sys-subsystem-net-devices-enp0s20u1.device` I have figured out that it's `dhcpcd` triggering initialization of the missing device. It kind of makes sense as I do not have it plugged in when working of the battery and have `dhcpcd@enp0s20u1.service` enabled (see [first part of the guide](/build-yourself-arch-linux-1.html#installing-and-configuring-base-system)). At first I have added a condition `ConditionPathExists=/sys/class/net/%i` to `dhcpcd` systemd unit file (`/usr/lib/systemd/system/dhcpcd@.service`) to only start it if the network device is present. Later on I have decided that I don't want network connection to be established until started explicitly and disabled the `dhcpcd` service. The changes done to the dhcpcd systemd unit in the first part of the tutorial can also be reverted (by reinstalling the package, e.g.).
+I have noticed (using `juornalctl -p3 -b`) that there's a timeout error when trying to start Ethernet adapter device (`sys-subsystem-net-devices-enp0s20u1.device`). Using `systemctl list-dependencies --reverse sys-subsystem-net-devices-enp0s20u1.device` I have figured out that it's `dhcpcd` triggering initialization of the missing device. It kind of makes sense as I do not have it plugged in when working of the battery and have `dhcpcd@enp0s20u1.service` enabled (see [first part of the guide](@/blog/build-yourself-arch-linux-1.md#installing-and-configuring-base-system)). At first I have added a condition `ConditionPathExists=/sys/class/net/%i` to `dhcpcd` systemd unit file (`/usr/lib/systemd/system/dhcpcd@.service`) to only start it if the network device is present. Later on I have decided that I don't want network connection to be established until started explicitly and disabled the `dhcpcd` service. The changes done to the dhcpcd systemd unit in the first part of the tutorial can also be reverted (by reinstalling the package, e.g.).
 
 ## Backup
 

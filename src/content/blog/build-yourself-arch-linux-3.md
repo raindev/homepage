@@ -6,7 +6,7 @@ aliases = [ "build-yourself-arch-linux-3.html" ]
 
 # Part 3: Let's Get a GUI
 
-This is the third and the final part of my Build Yourself Arch Linux series ([part 1](/build-yourself-arch-linux-1.html), [part 2](/build-yourself-arch-linux-2.html)). In this part I'll finally get to a graphical environment setup.
+This is the third and the final part of my Build Yourself Arch Linux series ([part 1](@/blog/build-yourself-arch-linux-1.md), [part 2](@/blog/build-yourself-arch-linux-2/index.md)). In this part I'll finally get to a graphical environment setup.
 
 ## GNOME
 
@@ -92,4 +92,4 @@ Even though I probably didn't get to 100% of the battery life I had with macOS I
 
 It's been a long time (almost a year since the first post!) and an exciting journey, I have learned a lot. I'm not looking back at all really. While in the beginning it was overwhelming to learn so much stuff at once now I feel as much productive as on macOS (if not more). Not having to deal with App Store, iTunes, million ways to update installed programs and slow macOS updates is great.
 
-Hope the series were useful to you. If you have any feedback, please [send it to me](/contact.html).
+Hope the series were useful to you. If you have any feedback, please [send it to me](@/contact.md).

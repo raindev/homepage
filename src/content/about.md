@@ -15,4 +15,4 @@ You can take a look at the source
 
 _I'm not a native English speaker, please forgive my grammar. I would be
 thankful for pointing out any mistakes you may encounter. Please use any way to
-[reach me](/contact.html) convenient for you._
+[reach me](@/contact.md) convenient for you._
