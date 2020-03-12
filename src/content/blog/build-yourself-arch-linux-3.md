@@ -54,9 +54,9 @@ Not tied to specific terminal emulator, but to make shell more pleasant to use I
 
 ## Building packages
 
-When you install AUR packages or rebuild official packages from source `xz` utility is used to get smaller package size at expense of build time. Compression step takes a significant portion of build time and by using multiple threads as described [here](https://wiki.archlinux.org/index.php/Makepkg#Utilizing_multiple_cores_on_compression) you can reduce that time significantly. The same way you can speed up compilation of packages by [using multiple threads](https://wiki.archlinux.org/index.php/Makepkg#MAKEFLAGS).
+When you install AUR packages or rebuild official packages from source `xz` utility is used to get smaller package size at expense of build time. Compression step takes a significant portion of build time and by using multiple threads as described [here](https://wiki.archlinux.org/index.php/Makepkg#Utilizing_multiple_cores_on_compression) you can reduce that time significantly. The same way you can speed up compilation of packages by [using multiple threads](https://wiki.archlinux.org/index.php/Makepkg#Parallel_compilation).
 
-You can also build (slightly) faster binaries when compiling from source by sacrificing portability which doesn't matter if you run built packages only on your own machine. To use the instruction set of your specific CPU by add `-mnative` to the compiler flags (`CFLAGS` and `CXXFLAGS` in `/etc/makepkg.conf`). See [ArchWiki](https://wiki.archlinux.org/index.php/Makepkg#Creating_optimized_packages) for more information about package optimization.
+You can also build (slightly) faster binaries when compiling from source by sacrificing portability which doesn't matter if you run built packages only on your own machine. To use the instruction set of your specific CPU by add `-mnative` to the compiler flags (`CFLAGS` and `CXXFLAGS` in `/etc/makepkg.conf`). See [ArchWiki](https://wiki.archlinux.org/index.php/Makepkg#Building_optimized_binaries) for more information about package optimization.
 
 ## Browser
 
