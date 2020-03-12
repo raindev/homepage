@@ -1,0 +1,96 @@
+
+    
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Space Leader - raindev</title>
+        <link rel="stylesheet" type="text/css" href="/default.css" />
+        <link rel="stylesheet" type"text/css" href="/gh-fork-ribbon.css" />
+        <link rel="alternate" type="application/atom+xml" href="/atom.xml"
+            title="Atom feed of raindev's blog">
+        <link rel="alternate" type="application/rss+xml" href="/rss.xml"
+            title="RSS feed of raindev's blog">
+
+        <!-- Google Analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-38075720-2', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+    </head>
+    <body>
+         <a class="github-fork-ribbon"
+            href="https://github.com/raindev"
+            title="Fork me on GitHub">Fork me on GitHub</a>
+        <div id="header">
+            <div id="logo">
+                <a href="/">Thoughts and Opinions</a>
+            </div>
+            <div id="navigation">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/blog">Archive</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Space Leader </h1>
+
+            
+<div class="info">
+    Posted on 2016-02-27
+</div>
+
+<p><small><em>(written on December 12, 2015)</em></small></p>
+<h1 id="why-i-use-space-as-my-vim-leader-key">Why I use space as my Vim leader key</h1>
+<p>One of the best Vim productivity boosts is to configure your leader key. What leader key does - it gives you a namespace for custom mappings. No default Vim mappings use leader key, so you're free to choose whatever shortcuts you like without worrying about conflicts with some predefined mappings. Considering this it makes sense to define custom mappings using leader key. It also facilitates remembering of shortcuts by providing mental separation for the ones you've crafted yourself. To activate a shortcut you just press leader key and than a specific mapping, e.g. I use <code>&lt;leader&gt;w</code> to save current file. Configuring such a mapping is quite easy: add <code>map &lt;leader&gt;w</code> to your .vimrc and you're done. Noticing things you do repeatedly working day-to-day in Vim and creating custom mappings for them will allow you to save a little bit of time constantly and will make editing with Vim more effortless.</p>
+<p>Lots of Vim tutorials recommend to use <code>,</code> as leader key. However I see a few benefits of using spacebar instead.</p>
+<h2 id="it-doesn-t-override-any-default-vim-mappings">It doesn't override any default Vim mappings</h2>
+<p>Contrary to <code>,</code>, which is used to move cursor to previous occurrence of a character navigated to using <code>t</code> or <code>f</code>, space doesn't do any particularly useful in normal mode by default. Yes, it does move cursor to the next character, but the motion is already covered by <code>l</code> key anyway (or an arrow key if you like to use those). So we could safely override default space behaviour. <code>,</code> is quite important for my workflow on the opposite side.</p>
+<h2 id="space-is-easy-to-reach-to">Space is easy to reach to</h2>
+<p>Most of your custom mappings will use leader key, so it should be better easy to type. Spacebar is a huge key placed very conveniently on most keyboards. It's a safe bet regarding ergonomics.</p>
+<h2 id="space-is-symmetrical">Space is symmetrical</h2>
+<p>This one alone is a good reason for me to use spacebar as my leader key. Given it's <em>equally</em> easily reachable for <em>both hands</em>, space leaves me with all the alphanumeric keys as convenient shortcut options. Again in contrast to <code>,</code> which is typed by the right hand making left hand letters more comfortable options for typing shortcuts without stretching fingers.</p>
+<p>There's even a text editor (a flavour of Emacs) based around the idea of space key as a gateway to all the editor commands called <a href="http://spacemacs.org">Spacemacs</a>. I've been playing around with it a little bit recently and it has been positive experience so far. Spacemacs goes one step further by providing instant visual feedback about available commands once you've pressed space key.</p>
+<h2 id="think-for-yourself">Think for yourself</h2>
+<p>This way to use leader key fits <em>my</em> workflow very well. It may or may not be as efficient in your case. Be critical of that &quot;mappings every Vimmer should use&quot; tips (and of this article as well). Try what works best for <em>you</em>, your fingers and your keyboard. If you're interested more in how I use Vim check out my <a href="https://github.com/raindev/dotfiles">dotfiles</a> GitHub repo. Happy editing!</p>
+<p>It would be interesting to know how do you use leader key, join the <a href="https://www.reddit.com/r/vim/comments/484isa/why_i_use_space_as_my_vim_leader_key/">Reddit discussion</a>.</p>
+
+
+        </div>
+        <div id="footer">
+            <div id="license">
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+                <img alt="Creative Commons License" src="/by-nc-sa.svg"
+                  title="The content is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License"/>
+              </a>
+            </div>
+            <div>
+                You could subscribe for the updates using
+                <a href="/atom.xml">Atom</a>
+                or
+                <a href="/rss.xml">RSS</a>
+                feed
+            </div>
+            <div>
+                Proudly generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>.
+                The website theme is inspired by
+                <a href="http://bettermotherfuckingwebsite.com">this website</a>
+            </div>
+            <div>
+                Credit for the portrait goes to <a href="https://instagram.com/ann_holovach">Hanna Holovach</a>
+            </div>
+        </div>
+    </body>
+</html>

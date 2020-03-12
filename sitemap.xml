@@ -1,116 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>http://raindev.io</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <url>
-        <loc>http://raindev.io/about.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.4</priority>
-    </url>
-
-    <url>
-        <loc>http://raindev.io/contact.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.4</priority>
-    </url>
-
-    <url>
-        <loc>http://raindev.io/archive.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.3</priority>
-    </url>
-
-
-    <url>
-        <loc>http://raindev.io/detecting-jvm-oome.html</loc>
-        <changefreq>monthly</changefreq>
-
-        <lastmod>2018-09-24</lastmod>
-
-    </url>
-
-    <url>
-        <loc>http://raindev.io/granular-git-configuration.html</loc>
-        <changefreq>monthly</changefreq>
-
-        <lastmod>2018-04-15</lastmod>
-
-    </url>
-
-    <url>
-        <loc>http://raindev.io/build-yourself-arch-linux-3.html</loc>
-        <changefreq>monthly</changefreq>
-
-        <lastmod>2017-10-11</lastmod>
-
-    </url>
-
-    <url>
-        <loc>http://raindev.io/hdd-for-macos.html</loc>
-        <changefreq>monthly</changefreq>
-
-        <lastmod>2017-06-15</lastmod>
-
-    </url>
-
-    <url>
-        <loc>http://raindev.io/whatsapp-tunneling.html</loc>
-        <changefreq>monthly</changefreq>
-
-        <lastmod>2017-05-07</lastmod>
-
-    </url>
-
-    <url>
-        <loc>http://raindev.io/build-yourself-arch-linux-2.html</loc>
-        <changefreq>monthly</changefreq>
-
-        <lastmod>2017-10-11</lastmod>
-
-    </url>
-
-    <url>
-        <loc>http://raindev.io/paper.html</loc>
-        <changefreq>monthly</changefreq>
-
-        <lastmod>2017-04-02</lastmod>
-
-    </url>
-
-    <url>
-        <loc>http://raindev.io/build-yourself-arch-linux-1.html</loc>
-        <changefreq>monthly</changefreq>
-
-        <lastmod>2017-10-11</lastmod>
-
-    </url>
-
-    <url>
-        <loc>http://raindev.io/hash-collision.html</loc>
-        <changefreq>monthly</changefreq>
-
-        <lastmod>2017-03-21</lastmod>
-
-    </url>
-
-    <url>
-        <loc>http://raindev.io/writers-block.html</loc>
-        <changefreq>monthly</changefreq>
-
-        <lastmod>2016-11-11</lastmod>
-
-    </url>
-
-    <url>
-        <loc>http://raindev.io/space-leader.html</loc>
-        <changefreq>monthly</changefreq>
-
-        <lastmod>2016-12-13</lastmod>
-
-    </url>
-
+    
+        <url>
+            <loc>https://raindev.io/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/about/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/atom.xml/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/blog/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/blog/build-yourself-arch-linux-1/</loc>
+            
+                <lastmod>2016-11-21</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/blog/build-yourself-arch-linux-2/</loc>
+            
+                <lastmod>2017-04-02</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/blog/build-yourself-arch-linux-3/</loc>
+            
+                <lastmod>2017-10-11</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/blog/detecting-jvm-oome/</loc>
+            
+                <lastmod>2018-09-25</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/blog/granular-git-configuration/</loc>
+            
+                <lastmod>2018-04-16</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/blog/hash-collision/</loc>
+            
+                <lastmod>2016-11-20</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/blog/hdd-for-macos/</loc>
+            
+                <lastmod>2017-06-15</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/blog/paper/</loc>
+            
+                <lastmod>2017-03-21</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/blog/space-leader/</loc>
+            
+                <lastmod>2016-02-27</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/blog/whatsapp-tunneling/</loc>
+            
+                <lastmod>2017-05-07</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/blog/writers-block/</loc>
+            
+                <lastmod>2016-11-11</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://raindev.io/contact/</loc>
+            
+        </url>
+    
 </urlset>

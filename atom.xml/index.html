@@ -1,20 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Thoughts and Opinions</title>
-        <link>https://raindev.io</link>
-        <description>raindev&#x27;s blog</description>
-        <generator>Zola</generator>
-        <language>en</language>
-        <atom:link href="https://raindev.io/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Tue, 25 Sep 2018 00:00:00 +0000</lastBuildDate>
-        
-            <item>
-                <title>Detecting java.lang.OutOfMemoryError before it happens</title>
-                <pubDate>Tue, 25 Sep 2018 00:00:00 +0000</pubDate>
-                <link>https://raindev.io/blog/detecting-jvm-oome/</link>
-                <guid>https://raindev.io/blog/detecting-jvm-oome/</guid>
-                <description>&lt;p&gt;Is it even possible, you might ask? Well, not really, we can&#x27;t predict the future. But we &lt;em&gt;can&lt;&#x2F;em&gt; detect the situation leading to &lt;code&gt;OutOfMemoryError&lt;&#x2F;code&gt;, lack of free heap memory, before it actually occurs. Technically there&#x27;re other causes of OutOfMemoryError &lt;a href=&quot;https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;technotes&#x2F;guides&#x2F;troubleshoot&#x2F;memleaks002.html&quot;&gt;described in detail here&lt;&#x2F;a&gt; which are outside of the scope of the article and arguably less frequent and interesting.&lt;&#x2F;p&gt;
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Thoughts and Opinions</title>
+    <subtitle>raindev&#x27;s blog</subtitle>
+    <link href="http://raindev.io/atom.xml" rel="self" />
+    <link href="https:&#x2F;&#x2F;raindev.io" />
+    <id>http://raindev.io/atom.xml</id>
+    <author>
+        <name>Andrew Barchuk</name>
+        <email>andrew@raindev.io</email>
+    </author>
+    
+    <updated>2018-09-25T00:00:00+00:00</updated>
+    
+    <entry>
+        <title>Detecting java.lang.OutOfMemoryError before it happens</title>
+        <link href="https://raindev.io/blog/detecting-jvm-oome/"/>
+        <id>https://raindev.io/blog/detecting-jvm-oome/</id>
+        <published>2018-09-25T00:00:00+00:00</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">&lt;p&gt;Is it even possible, you might ask? Well, not really, we can&#x27;t predict the future. But we &lt;em&gt;can&lt;&#x2F;em&gt; detect the situation leading to &lt;code&gt;OutOfMemoryError&lt;&#x2F;code&gt;, lack of free heap memory, before it actually occurs. Technically there&#x27;re other causes of OutOfMemoryError &lt;a href=&quot;https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;technotes&#x2F;guides&#x2F;troubleshoot&#x2F;memleaks002.html&quot;&gt;described in detail here&lt;&#x2F;a&gt; which are outside of the scope of the article and arguably less frequent and interesting.&lt;&#x2F;p&gt;
 &lt;p&gt;Before moving forward, why can&#x27;t we handle &lt;code&gt;java.lang.OutOfMemoryError&lt;&#x2F;code&gt; when it actually happens? The error is a &lt;code&gt;Throwable&lt;&#x2F;code&gt;, so we can catch it, right? Not quite. While technically the error can be caught there&#x27;re very few cases when it&#x27;s actually useful to do so. Because Java is a garbage collected language allocations of objects on the heap happens all the time as a part of the normal program execution, including when an exception is caught (e.g. to record the stack trace information). When a program runs out of memory all bets are off: any thread of the program can die at any time. You no longer can count on the application being in a sane state. &amp;quot;Impossible&amp;quot; things can happen. Okay, but at least the error will get logged? Unfortunately, that&#x27;s not always true. Again, if a program has run out of memory you can&#x27;t count on any operation to succeed. Writing a log, as everything else, allocates memory and can fail. As well as simply writing a message to the standard error output. This makes the error hard to detect.&lt;&#x2F;p&gt;
 &lt;p&gt;If we can&#x27;t do anything when an application runs out of memory, why should we care, can&#x27;t we just let the application crash? One big reason is operability. Imagine getting an on-call alert about a web-service being slow. Or unresponsive. Or down. It&#x27;s so much easier when you know that the service run out of memory rather than spending time in vain looking at the resource consumption graphs, garbage collector logs, application logs (hoping that a message about &lt;code&gt;OutOfMemoryError&lt;&#x2F;code&gt; was written to successfully).&lt;&#x2F;p&gt;
 &lt;p&gt;Is detecting when an application runs out of memory &lt;em&gt;really&lt;&#x2F;em&gt; that hard? There are already ways to monitor memory heap usage. So what&#x27;s wrong with using that to detect when the program is running low on memory? Having all the memory used and having no memory available are different things in a garbage collected languages. At any point in time there will be objects in memory that are actually used alongside yet-to-be-collected garbage. &lt;code&gt;OutOfMemoryError&lt;&#x2F;code&gt; happens not when all the memory is used but when none can be claimed back after garbage collection.&lt;&#x2F;p&gt;
@@ -64,15 +68,16 @@
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;techblug.wordpress.com&#x2F;2011&#x2F;07&#x2F;21&#x2F;detecting-low-memory-in-java-part-2&#x2F;&quot;&gt;the article describing the idea&lt;&#x2F;a&gt;. The solution presented in my article is basically the same but also handles dynamically growing heap.&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-</description>
-            </item>
-        
-            <item>
-                <title>Granular Git Configuration</title>
-                <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
-                <link>https://raindev.io/blog/granular-git-configuration/</link>
-                <guid>https://raindev.io/blog/granular-git-configuration/</guid>
-                <description>&lt;p&gt;Even though in most cases having a single Git configuration is enough, sometimes more granular control is needed. Let&#x27;s say you have a common Git configuration you use on your personal server, a laptop and a desktop. You probably want to share that configuration across the machines as part of your &lt;a href=&quot;https:&#x2F;&#x2F;zachholman.com&#x2F;2010&#x2F;08&#x2F;dotfiles-are-meant-to-be-forked&#x2F;&quot;&gt;dotfiles repository&lt;&#x2F;a&gt;. Also you have a work laptop and you need some special Git configuration for work projects. Occasionally you commit to your personal repositories or some open source repositories from the work laptop and you don&#x27;t want to have the work configuration applied in those cases. Let&#x27;s see how you can organize the Git configuration to match the described setup step by step.&lt;&#x2F;p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Granular Git Configuration</title>
+        <link href="https://raindev.io/blog/granular-git-configuration/"/>
+        <id>https://raindev.io/blog/granular-git-configuration/</id>
+        <published>2018-04-16T00:00:00+00:00</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">&lt;p&gt;Even though in most cases having a single Git configuration is enough, sometimes more granular control is needed. Let&#x27;s say you have a common Git configuration you use on your personal server, a laptop and a desktop. You probably want to share that configuration across the machines as part of your &lt;a href=&quot;https:&#x2F;&#x2F;zachholman.com&#x2F;2010&#x2F;08&#x2F;dotfiles-are-meant-to-be-forked&#x2F;&quot;&gt;dotfiles repository&lt;&#x2F;a&gt;. Also you have a work laptop and you need some special Git configuration for work projects. Occasionally you commit to your personal repositories or some open source repositories from the work laptop and you don&#x27;t want to have the work configuration applied in those cases. Let&#x27;s see how you can organize the Git configuration to match the described setup step by step.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;global-configuration&quot;&gt;Global configuration&lt;&#x2F;h2&gt;
 &lt;p&gt;Firstly, the configuration you share between all the machines will be Global Git configuration. It&#x27;s stored in &lt;code&gt;~&#x2F;.gitconfig&lt;&#x2F;code&gt; (can be modified using &lt;code&gt;git config --global&lt;&#x2F;code&gt; commands as well). This file will be the same everywhere and can be in your dotfiles repository. For simplicity let&#x27;s say the configuration contains user name and email. In my case that would be:&lt;&#x2F;p&gt;
 &lt;pre&gt;&lt;code&gt;[user]
@@ -98,15 +103,16 @@
 &lt;h2 id=&quot;bonus-repository-specific-configuration&quot;&gt;Bonus: repository specific configuration&lt;&#x2F;h2&gt;
 &lt;p&gt;If for some reason you need to change Git configuration only for a single repository for some reason it can be done by editing &lt;code&gt;.git&#x2F;config&lt;&#x2F;code&gt; file or simply with &lt;code&gt;git config&lt;&#x2F;code&gt; (no &lt;code&gt;--global&lt;&#x2F;code&gt; flag this time).&lt;&#x2F;p&gt;
 &lt;p&gt;If you&#x27;re curious about my dotfiles feel free to check out &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;raindev&#x2F;dotfiles&quot;&gt;the GitHub repository&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-</description>
-            </item>
-        
-            <item>
-                <title>Build Yourself Arch Linux, Part 3</title>
-                <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
-                <link>https://raindev.io/blog/build-yourself-arch-linux-3/</link>
-                <guid>https://raindev.io/blog/build-yourself-arch-linux-3/</guid>
-                <description>&lt;h1 id=&quot;part-3-let-s-get-a-gui&quot;&gt;Part 3: Let&#x27;s Get a GUI&lt;&#x2F;h1&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Build Yourself Arch Linux, Part 3</title>
+        <link href="https://raindev.io/blog/build-yourself-arch-linux-3/"/>
+        <id>https://raindev.io/blog/build-yourself-arch-linux-3/</id>
+        <published>2017-10-11T00:00:00+00:00</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">&lt;h1 id=&quot;part-3-let-s-get-a-gui&quot;&gt;Part 3: Let&#x27;s Get a GUI&lt;&#x2F;h1&gt;
 &lt;p&gt;This is the third and the final part of my Build Yourself Arch Linux series (&lt;a href=&quot;&#x2F;build-yourself-arch-linux-1.html&quot;&gt;part 1&lt;&#x2F;a&gt;, &lt;a href=&quot;&#x2F;build-yourself-arch-linux-2.html&quot;&gt;part 2&lt;&#x2F;a&gt;). In this part I&#x27;ll finally get to a graphical environment setup.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;gnome&quot;&gt;GNOME&lt;&#x2F;h2&gt;
 &lt;p&gt;Before settling down on &lt;a href=&quot;https:&#x2F;&#x2F;gnome.org&#x2F;&quot;&gt;GNOME&lt;&#x2F;a&gt; I&#x27;ve tried (well installed and played around for 10 minutes) most of &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Desktop_environment#List_of_desktop_environments&quot;&gt;the desktop environments supported by Arch&lt;&#x2F;a&gt;. I&#x27;ve been using GNOME 3 in the past but decided to look what else is out there. The reason I&#x27;ve settled on GNOME now is HiDPI support. While there&#x27;re other desktop environments that support HiDPI GNOME gave me the best result with pretty much no configuration. I was really tempted by &lt;a href=&quot;https:&#x2F;&#x2F;www.kde.org&#x2F;plasma-desktop&quot;&gt;KDE Plasma&lt;&#x2F;a&gt; which looks gorgeous and does support HiDPI. Still on MacBook&#x27;s screen GNOME was a bit more consistent: I&#x27;ve got too small icons here and there in Plasma. &lt;a href=&quot;http:&#x2F;&#x2F;lxqt.org&#x2F;&quot;&gt;LXQT&lt;&#x2F;a&gt; is another DE I&#x27;m interested in. Given the progress towards HiDPI support or possibility of getting an external monitor with ordinary resolution I&#x27;ll probably be able to reevaluate my choice of desktop environment soon enough.&lt;&#x2F;p&gt;
@@ -151,15 +157,16 @@
 &lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;&#x2F;h2&gt;
 &lt;p&gt;It&#x27;s been a long time (almost a year since the first post!) and an exciting journey, I have learned a lot. I&#x27;m not looking back at all really. While in the beginning it was overwhelming to learn so much stuff at once now I feel as much productive as on macOS (if not more). Not having to deal with App Store, iTunes, million ways to update installed programs and slow macOS updates is great.&lt;&#x2F;p&gt;
 &lt;p&gt;Hope the series were useful to you. If you have any feedback, please &lt;a href=&quot;&#x2F;contact.html&quot;&gt;send it to me&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-</description>
-            </item>
-        
-            <item>
-                <title>How to Partition an External Hard Drive for macOS</title>
-                <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
-                <link>https://raindev.io/blog/hdd-for-macos/</link>
-                <guid>https://raindev.io/blog/hdd-for-macos/</guid>
-                <description>&lt;p&gt;TL;DR macOS expects 200 MB EFI System partition in the beginning of a hard drive, don&#x27;t like unformatted partitions and creates 128 MB Apple boot partitions after each real partition whenever you format it.&lt;&#x2F;p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>How to Partition an External Hard Drive for macOS</title>
+        <link href="https://raindev.io/blog/hdd-for-macos/"/>
+        <id>https://raindev.io/blog/hdd-for-macos/</id>
+        <published>2017-06-15T00:00:00+00:00</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">&lt;p&gt;TL;DR macOS expects 200 MB EFI System partition in the beginning of a hard drive, don&#x27;t like unformatted partitions and creates 128 MB Apple boot partitions after each real partition whenever you format it.&lt;&#x2F;p&gt;
 &lt;p&gt;I needed to partition an external hard drive to be usable on macOS (for &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Time_Machine_(macOS)&quot;&gt;Time Machine&lt;&#x2F;a&gt; backups). I&#x27;ve partitioned the drive using &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;GUID_Partition_Table&quot;&gt;GPT&lt;&#x2F;a&gt; scheme and created one unformatted Apple HFS&#x2F;HFS+ partition on Arch Linux using &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Fdisk&quot;&gt;fdisk&lt;&#x2F;a&gt;. It was not recognized (the inserted disk is not readable dialogue), nor was I able to format the partition (with &amp;quot;Media kit reports not enough space on device&amp;quot; error) which was shown as full in the Disk Utility. When I have formatted the partition (using mkfs.hfsplus from &lt;a href=&quot;https:&#x2F;&#x2F;www.archlinux.org&#x2F;packages&#x2F;community&#x2F;x86_64&#x2F;hfsprogs&#x2F;&quot;&gt;hfsprogs&lt;&#x2F;a&gt;) the partition was recognized but I was unable to initialize it for Time Machine or format with the same error as before. Finally I have partitioned the drive from macOS and created a new partition. Looking at the drive with fdisk I&#x27;ve discovered that EFI System partition was created in the beginning of the disk with size of 200MB. When I have recreated the same partitioning layout using fdisk it was recognized properly. After setting up Time Machine backups on the created partition I have inspected the disk once more. The partition type was changed to Apple core storage and a 128 MB partition was created after it. When I created another partition for the second MacBook I got one more 125 MB Apple boot partition. The resulting partition table was:&lt;&#x2F;p&gt;
 &lt;pre&gt;&lt;code&gt;Device         Start       End   Sectors  Size Type
 &#x2F;dev&#x2F;sdb1       2048    411647    409600  200M EFI System
@@ -169,15 +176,16 @@
 &#x2F;dev&#x2F;sdb5  478824448 479086591    262144  128M Apple boot
 &lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;So 5 partitions instead of 2 I actually needed. &lt;a href=&quot;https:&#x2F;&#x2F;developer.apple.com&#x2F;library&#x2F;content&#x2F;technotes&#x2F;tn2166&#x2F;_index.html#&#x2F;&#x2F;apple_ref&#x2F;doc&#x2F;uid&#x2F;DTS10003927-CH1-SUBSECTION5&quot;&gt;Here&lt;&#x2F;a&gt; Apple&#x27;s partitioning policy can be found describing when additional partitions are created with some justifications trying to answer why they are needed.&lt;&#x2F;p&gt;
-</description>
-            </item>
-        
-            <item>
-                <title>What&#x27;s Wrong with WhatsApp Message Tunneling</title>
-                <pubDate>Sun, 07 May 2017 00:00:00 +0000</pubDate>
-                <link>https://raindev.io/blog/whatsapp-tunneling/</link>
-                <guid>https://raindev.io/blog/whatsapp-tunneling/</guid>
-                <description>&lt;p&gt;A colleague asked me on Twitter what the problems do I have with the way WhatsApp tunnels all the messages though my phone:&lt;&#x2F;p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>What&#x27;s Wrong with WhatsApp Message Tunneling</title>
+        <link href="https://raindev.io/blog/whatsapp-tunneling/"/>
+        <id>https://raindev.io/blog/whatsapp-tunneling/</id>
+        <published>2017-05-07T00:00:00+00:00</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">&lt;p&gt;A colleague asked me on Twitter what the problems do I have with the way WhatsApp tunnels all the messages though my phone:&lt;&#x2F;p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;raindev_&#x2F;status&#x2F;859872365886545920&quot;&gt;@raindev_&lt;&#x2F;a&gt;: I&#x27;m
 tired of WhatsApp tunneling all the messages through my phone. Time to
@@ -212,15 +220,16 @@ don&#x27;t I have my phone on same Wi-Fi as computer.&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;&#x2F;ol&gt;
 &lt;p&gt;While  all of the issues above are not critical (in fact I&#x27;ve used WhatsApp as my main messenger successfully for more than a year), they makes me look at alternatives time to time (the current contender is &lt;a href=&quot;https:&#x2F;&#x2F;wire.com&quot;&gt;Wire&lt;&#x2F;a&gt;).&lt;&#x2F;p&gt;
-</description>
-            </item>
-        
-            <item>
-                <title>Build Yourself Arch Linux, Part 2</title>
-                <pubDate>Sun, 02 Apr 2017 00:00:00 +0000</pubDate>
-                <link>https://raindev.io/blog/build-yourself-arch-linux-2/</link>
-                <guid>https://raindev.io/blog/build-yourself-arch-linux-2/</guid>
-                <description>&lt;h1 id=&quot;part-2-getting-work-done-from-console&quot;&gt;Part 2: Getting Work Done from Console&lt;&#x2F;h1&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Build Yourself Arch Linux, Part 2</title>
+        <link href="https://raindev.io/blog/build-yourself-arch-linux-2/"/>
+        <id>https://raindev.io/blog/build-yourself-arch-linux-2/</id>
+        <published>2017-04-02T00:00:00+00:00</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">&lt;h1 id=&quot;part-2-getting-work-done-from-console&quot;&gt;Part 2: Getting Work Done from Console&lt;&#x2F;h1&gt;
 &lt;p&gt;This is the second part of the series of articles (&lt;a href=&quot;&#x2F;build-yourself-arch-linux-1.html&quot;&gt;part 1&lt;&#x2F;a&gt;, &lt;a href=&quot;&#x2F;build-yourself-arch-linux-3.html&quot;&gt;part 3&lt;&#x2F;a&gt;) about setting up Arch Linux on my MacBook. The main goal of this part is to make the installation actually useful to do some work. In some sense, I want to bootstrap the series to be able to work on the posts under Linux. Disclaimer: I won&#x27;t get to setting up graphical environment in this part; while it&#x27;s possible to do everything from this article &lt;em&gt;after&lt;&#x2F;em&gt; installing a graphical environment, I&#x27;ve decided to try how far can I get without one.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;unprivileged-user&quot;&gt;Unprivileged user&lt;&#x2F;h2&gt;
 &lt;p&gt;It is &lt;a href=&quot;https:&#x2F;&#x2F;apple.stackexchange.com&#x2F;questions&#x2F;192365&#x2F;is-it-ok-to-use-the-root-user-as-a-normal-user&#x2F;192422#192422&quot;&gt;not a good idea&lt;&#x2F;a&gt; to use a computer as root user all the time. &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Users_and_groups#User_management&quot;&gt;Here&lt;&#x2F;a&gt; is how to create a new unprivileged user and set its password. Beware that a user&#x27;s home directory is created from a template called skeleton and the default skeleton (&lt;code&gt;&#x2F;etc&#x2F;skel&lt;&#x2F;code&gt;) contains only a few basic dotfiles templates like &lt;code&gt;.bashrc&lt;&#x2F;code&gt;. It may be confusing if you used to see bunch of predefined media directories in your home catalogue.&lt;&#x2F;p&gt;
@@ -312,26 +321,28 @@ don&#x27;t I have my phone on same Wi-Fi as computer.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;credits&quot;&gt;Credits&lt;&#x2F;h2&gt;
 &lt;p&gt;As well as in the first part of the guide I&#x27;ve relied heavily on &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinu.org&#x2F;&quot;&gt;ArchWiki&lt;&#x2F;a&gt; in particular &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;General_recommendations&quot;&gt;General recommendations section&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;img src=&quot;console.jpg&quot; style=&quot;width: 100%&quot; &#x2F;&gt;
-</description>
-            </item>
-        
-            <item>
-                <title>Paper</title>
-                <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
-                <link>https://raindev.io/blog/paper/</link>
-                <guid>https://raindev.io/blog/paper/</guid>
-                <description>&lt;p&gt;&lt;small&gt;&lt;em&gt;(written on December 23, 2016)&lt;&#x2F;em&gt;&lt;&#x2F;small&gt;&lt;&#x2F;p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Paper</title>
+        <link href="https://raindev.io/blog/paper/"/>
+        <id>https://raindev.io/blog/paper/</id>
+        <published>2017-03-21T00:00:00+00:00</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">&lt;p&gt;&lt;small&gt;&lt;em&gt;(written on December 23, 2016)&lt;&#x2F;em&gt;&lt;&#x2F;small&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;After trying almost (hello, org-mode) all digital solutions for organizing my life out there and spending hundreds of dollars and countless hours worth of time I&#x27;ve bought myself a paper notebook. And I&#x27;m happy that I did. I used to be a firm proponent of keeping one&#x27;s life digital as much as possible so it may sound like  a strange decision. And indeed it is. Not that I&#x27;ve never used a paper notebook before. But it never was front and center of organizing my life.&lt;&#x2F;p&gt;
 &lt;p&gt;The notebook never get out of charge, never crashes, I&#x27;ll never lose my notes because of a bug in the synchronization. Simple things is what brings happiness.&lt;&#x2F;p&gt;
-</description>
-            </item>
-        
-            <item>
-                <title>Build Yourself Arch Linux</title>
-                <pubDate>Mon, 21 Nov 2016 00:00:00 +0000</pubDate>
-                <link>https://raindev.io/blog/build-yourself-arch-linux-1/</link>
-                <guid>https://raindev.io/blog/build-yourself-arch-linux-1/</guid>
-                <description>&lt;h1 id=&quot;part-1-base-system&quot;&gt;Part 1: Base System&lt;&#x2F;h1&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Build Yourself Arch Linux</title>
+        <link href="https://raindev.io/blog/build-yourself-arch-linux-1/"/>
+        <id>https://raindev.io/blog/build-yourself-arch-linux-1/</id>
+        <published>2016-11-21T00:00:00+00:00</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">&lt;h1 id=&quot;part-1-base-system&quot;&gt;Part 1: Base System&lt;&#x2F;h1&gt;
 &lt;p&gt;This is the first part of a series of articles (&lt;a href=&quot;&#x2F;build-yourself-arch-linux-2.html&quot;&gt;part 2&lt;&#x2F;a&gt;, &lt;a href=&quot;&#x2F;build-yourself-arch-linux-3.html&quot;&gt;part 3&lt;&#x2F;a&gt;) on how I set up dual boot Arch Linux on my Mid 2014 MacBook Pro. At the end of this part I&#x27;ll have a bootable but completely minimal installation of Arch on an encrypted partition without any tuning. Ability to boot to Mac OS will be preserved.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;updates&quot;&gt;Updates&lt;&#x2F;h3&gt;
 &lt;p&gt;December 11, 2016: clarify how to customize list of installed base package; add instructions how to start wired network automatically; describe a separate &lt;code&gt;&#x2F;data&lt;&#x2F;code&gt; partition.&lt;&#x2F;p&gt;
@@ -374,15 +385,16 @@ don&#x27;t I have my phone on same Wi-Fi as computer.&lt;&#x2F;p&gt;
 &lt;p&gt;In some time I hope to post the second part of the guide. I&#x27;m going to focus on things like user and power management, wireless and continue to build the system upon the base I have.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;credits&quot;&gt;Credits&lt;&#x2F;h2&gt;
 &lt;p&gt;To write this guide I relied heavily on &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&quot;&gt;ArchWiki&lt;&#x2F;a&gt;, and three tutorials by &lt;a href=&quot;http:&#x2F;&#x2F;loicpefferkorn.net&#x2F;2015&#x2F;01&#x2F;arch-linux-on-macbook-pro-retina-2014-with-dm-crypt-lvm-and-suspend-to-disk&#x2F;#dm-crypt-and-lvm:385892e3ac2613dca78d22bd09dbae7d&quot;&gt;Loïc Pefferkorn&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;mchladek.me&#x2F;post&#x2F;arch-mbp&#x2F;&quot;&gt;Michael Chladek&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;visual-assault.org&#x2F;2016&#x2F;03&#x2F;05&#x2F;install-encrypted-arch-linux-on-apple-macbook-pro&#x2F;#boot-loader&quot;&gt;Ron A.&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
-</description>
-            </item>
-        
-            <item>
-                <title>Hash Collision</title>
-                <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
-                <link>https://raindev.io/blog/hash-collision/</link>
-                <guid>https://raindev.io/blog/hash-collision/</guid>
-                <description>&lt;h1 id=&quot;or-why-i-m-leaving-google-s-services&quot;&gt;Or Why I&#x27;m Leaving Google&#x27;s Services&lt;&#x2F;h1&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Hash Collision</title>
+        <link href="https://raindev.io/blog/hash-collision/"/>
+        <id>https://raindev.io/blog/hash-collision/</id>
+        <published>2016-11-20T00:00:00+00:00</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">&lt;h1 id=&quot;or-why-i-m-leaving-google-s-services&quot;&gt;Or Why I&#x27;m Leaving Google&#x27;s Services&lt;&#x2F;h1&gt;
 &lt;p&gt;Recently there was a lot of &lt;a href=&quot;https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=12972554&quot;&gt;talk&lt;&#x2F;a&gt; about Google services on Hacker News. Concerns people have about loosing control over their data prompted me to check out how I use Google.&lt;&#x2F;p&gt;
 &lt;p&gt;There&#x27;re a few reasons to worry: loosing your data, giving to much personal information to one company and having someone (or something) reading (or scanning) your private stuff. While I tried to limit my use of Google&#x27;s services in the past and moved off the major ones like Gmail, Calendar, Contacts there&#x27;s still a lot of my stuff on Google&#x27;s servers. Especially given my switch to Android about half a year ago.&lt;&#x2F;p&gt;
 &lt;p&gt;I was frightened a little bit when I realised that all of my photo archive is in Google Photos and I do not have any backups. While I do trust Google to store my data reliably, I do not want to be denied access to my entire photo collection because of conflict of interest with the company (or simply because of a natural disaster). I decided to download my photos using &lt;a href=&quot;https:&#x2F;&#x2F;google.com&#x2F;settings&#x2F;takeout&quot;&gt;Google Takeout&lt;&#x2F;a&gt; to have at least a local copy until I figure out how I&#x27;m going to back up my data properly and find another photo storage solution. I&#x27;m looking at Dropbox and Flickr now, Flickr should be more convenient, but Dropbox can be more private. Note how a privacy became a relative term nowadays.&lt;&#x2F;p&gt;
@@ -391,15 +403,16 @@ don&#x27;t I have my phone on same Wi-Fi as computer.&lt;&#x2F;p&gt;
 &lt;p&gt;(Hash is a supposedly unique fixed size value associated with some input. But because there is limited number of fixed size values and unlimited number of inputs, inevitably some different inputs will be associated with the same hashes. That&#x27;s called hash collision. The same basic idea applies to PhotoDNA: two different pictures, one ill and one not, will trigger the same result given large number of samples and an imprecise system, which machine learning always is.)&lt;&#x2F;p&gt;
 &lt;p&gt;Going forward I&#x27;m going to log in into Google account in my browser only when needed to not have myself constantly tracked on the web. Most of the services are perfectly functional without an account, like Translate, Maps, Search (I use it as a fallback for DuckDuckGo), even YouTube, despite completely crappy default recommendations. Also I&#x27;m thinking to create a separate accounts for the services I&#x27;ll continue to use like Alerts, Webmaster Tools and for my Android phone. Some services I&#x27;m going to ditch, like Analytics, Photos and Hangouts. To get my pictures off Google Photos will be the hardest but I&#x27;d like to do it.&lt;&#x2F;p&gt;
 &lt;p&gt;I&#x27;m not agitating you to leave Google services but be aware what information do you give away and remember to keep backups of your data. If the topic is of interest to you I&#x27;ll recommend &lt;a href=&quot;https:&#x2F;&#x2F;www.philzimmermann.com&#x2F;EN&#x2F;essays&#x2F;WhyIWrotePGP.html&quot;&gt;a very good (despite quite old) article&lt;&#x2F;a&gt; about privacy and encryption by the author of &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Pretty_Good_Privacy&quot;&gt;GPG&lt;&#x2F;a&gt; Philip Zimmermann.&lt;&#x2F;p&gt;
-</description>
-            </item>
-        
-            <item>
-                <title>On Writer&#x27;s Block</title>
-                <pubDate>Fri, 11 Nov 2016 00:00:00 +0000</pubDate>
-                <link>https://raindev.io/blog/writers-block/</link>
-                <guid>https://raindev.io/blog/writers-block/</guid>
-                <description>&lt;p&gt;If you&#x27;ll have a look on &lt;a href=&quot;&#x2F;archive.html&quot;&gt;timeline&lt;&#x2F;a&gt; of this blog of mine it will be obvious that I&#x27;m dealing with writer&#x27;s block. I always wanted to have &lt;em&gt;real&lt;&#x2F;em&gt; blog, to do &lt;code&gt;git push&lt;&#x2F;code&gt; to publish, to build it &lt;em&gt;from scratch&lt;&#x2F;em&gt; myself. And about 9 month ago I got it. I found &lt;a href=&quot;https:&#x2F;&#x2F;jaspervdj.be&#x2F;hakyll&#x2F;&quot;&gt;Hakyll&lt;&#x2F;a&gt; which felt awesome, like assembling a model airplane from parts. I&#x27;ve refined it over couple of weeks and got what I wanted to have. The first post event caught some attention as I&#x27;ve decided to post it to Reddit. There has been both positive and negative &lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;vim&#x2F;comments&#x2F;484isa&#x2F;why_i_use_space_as_my_vim_leader_key&#x2F;&quot;&gt;feedback&lt;&#x2F;a&gt;. But there will &lt;em&gt;always&lt;&#x2F;em&gt; be negative feedback, so it was fine.&lt;&#x2F;p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>On Writer&#x27;s Block</title>
+        <link href="https://raindev.io/blog/writers-block/"/>
+        <id>https://raindev.io/blog/writers-block/</id>
+        <published>2016-11-11T00:00:00+00:00</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">&lt;p&gt;If you&#x27;ll have a look on &lt;a href=&quot;&#x2F;archive.html&quot;&gt;timeline&lt;&#x2F;a&gt; of this blog of mine it will be obvious that I&#x27;m dealing with writer&#x27;s block. I always wanted to have &lt;em&gt;real&lt;&#x2F;em&gt; blog, to do &lt;code&gt;git push&lt;&#x2F;code&gt; to publish, to build it &lt;em&gt;from scratch&lt;&#x2F;em&gt; myself. And about 9 month ago I got it. I found &lt;a href=&quot;https:&#x2F;&#x2F;jaspervdj.be&#x2F;hakyll&#x2F;&quot;&gt;Hakyll&lt;&#x2F;a&gt; which felt awesome, like assembling a model airplane from parts. I&#x27;ve refined it over couple of weeks and got what I wanted to have. The first post event caught some attention as I&#x27;ve decided to post it to Reddit. There has been both positive and negative &lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;vim&#x2F;comments&#x2F;484isa&#x2F;why_i_use_space_as_my_vim_leader_key&#x2F;&quot;&gt;feedback&lt;&#x2F;a&gt;. But there will &lt;em&gt;always&lt;&#x2F;em&gt; be negative feedback, so it was fine.&lt;&#x2F;p&gt;
 &lt;p&gt;But than I stopped. Not that I stopped to write. I still drafted quite a few articles, had a few enlightening ideas of posts. But I never got to publish any of that. So I decided to &lt;em&gt;post&lt;&#x2F;em&gt; about writer&#x27;s block as I got to know what it is too well.&lt;&#x2F;p&gt;
 &lt;p&gt;How it usually was:&lt;&#x2F;p&gt;
 &lt;ol&gt;
@@ -413,15 +426,16 @@ don&#x27;t I have my phone on same Wi-Fi as computer.&lt;&#x2F;p&gt;
 &lt;p&gt;How I decided to accomplish what I haven&#x27;t been able to do? First, I&#x27;m already fed up with my inability to post. Motivation is the key and all of that. The fact that most of my friends have empty blogs do not help, I acknowledge. Reduce friction (you probably know that already): I started to edit a post template directly rather than a file somewhere so publish is literally one command. Do it fast: your energy won&#x27;t last long. Edit immediately, but not during writing. I never got to edit most of my drafts. Some &lt;a href=&quot;https:&#x2F;&#x2F;open.spotify.com&#x2F;user&#x2F;spotify_germany&#x2F;playlist&#x2F;2nKFnGNFvHX9hG5Kv7Bm3G&quot;&gt;deep house&lt;&#x2F;a&gt; may help, if that&#x27;s your kind of thing. Oh yeah, shutdown your Internet.&lt;&#x2F;p&gt;
 &lt;p&gt;Finally, keep it short (one screen with large font). That&#x27;s it. I hope you&#x27;ll succeed one day as well.&lt;&#x2F;p&gt;
 &lt;p&gt;Bonus tip: you can edit posts &lt;em&gt;after&lt;&#x2F;em&gt; you published them :P&lt;&#x2F;p&gt;
-</description>
-            </item>
-        
-            <item>
-                <title>Space Leader</title>
-                <pubDate>Sat, 27 Feb 2016 00:00:00 +0000</pubDate>
-                <link>https://raindev.io/blog/space-leader/</link>
-                <guid>https://raindev.io/blog/space-leader/</guid>
-                <description>&lt;p&gt;&lt;small&gt;&lt;em&gt;(written on December 12, 2015)&lt;&#x2F;em&gt;&lt;&#x2F;small&gt;&lt;&#x2F;p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Space Leader</title>
+        <link href="https://raindev.io/blog/space-leader/"/>
+        <id>https://raindev.io/blog/space-leader/</id>
+        <published>2016-02-27T00:00:00+00:00</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">&lt;p&gt;&lt;small&gt;&lt;em&gt;(written on December 12, 2015)&lt;&#x2F;em&gt;&lt;&#x2F;small&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;why-i-use-space-as-my-vim-leader-key&quot;&gt;Why I use space as my Vim leader key&lt;&#x2F;h1&gt;
 &lt;p&gt;One of the best Vim productivity boosts is to configure your leader key. What leader key does - it gives you a namespace for custom mappings. No default Vim mappings use leader key, so you&#x27;re free to choose whatever shortcuts you like without worrying about conflicts with some predefined mappings. Considering this it makes sense to define custom mappings using leader key. It also facilitates remembering of shortcuts by providing mental separation for the ones you&#x27;ve crafted yourself. To activate a shortcut you just press leader key and than a specific mapping, e.g. I use &lt;code&gt;&amp;lt;leader&amp;gt;w&lt;&#x2F;code&gt; to save current file. Configuring such a mapping is quite easy: add &lt;code&gt;map &amp;lt;leader&amp;gt;w&lt;&#x2F;code&gt; to your .vimrc and you&#x27;re done. Noticing things you do repeatedly working day-to-day in Vim and creating custom mappings for them will allow you to save a little bit of time constantly and will make editing with Vim more effortless.&lt;&#x2F;p&gt;
 &lt;p&gt;Lots of Vim tutorials recommend to use &lt;code&gt;,&lt;&#x2F;code&gt; as leader key. However I see a few benefits of using spacebar instead.&lt;&#x2F;p&gt;
@@ -435,8 +449,7 @@ don&#x27;t I have my phone on same Wi-Fi as computer.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;think-for-yourself&quot;&gt;Think for yourself&lt;&#x2F;h2&gt;
 &lt;p&gt;This way to use leader key fits &lt;em&gt;my&lt;&#x2F;em&gt; workflow very well. It may or may not be as efficient in your case. Be critical of that &amp;quot;mappings every Vimmer should use&amp;quot; tips (and of this article as well). Try what works best for &lt;em&gt;you&lt;&#x2F;em&gt;, your fingers and your keyboard. If you&#x27;re interested more in how I use Vim check out my &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;raindev&#x2F;dotfiles&quot;&gt;dotfiles&lt;&#x2F;a&gt; GitHub repo. Happy editing!&lt;&#x2F;p&gt;
 &lt;p&gt;It would be interesting to know how do you use leader key, join the &lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;vim&#x2F;comments&#x2F;484isa&#x2F;why_i_use_space_as_my_vim_leader_key&#x2F;&quot;&gt;Reddit discussion&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-</description>
-            </item>
-        
-    </channel>
-</rss>
+</content>
+    </entry>
+    
+</feed>
