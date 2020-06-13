@@ -1,5 +1,5 @@
 +++
-title = "Detecting java.lang.OutOfMemoryError before it happens"
+title = "Detecting Java OutOfMemoryError before it happens"
 date = 2018-09-25
 aliases = [ "detecting-jvm-oome.html" ]
 +++
@@ -22,39 +22,49 @@ Before we continue it worth clarifying that in modern JVM all the heap memory is
 
 So we're interested in being notified about running low on space in tenured generation memory pool. An interface for interacting with a JVM memory pool is provided by [`MemoreyPoolMXBean`](https://docs.oracle.com/javase/10/docs/api/java/lang/management/MemoryPoolMXBean.html). The bean for the pool we're interested in can be obtained by filtering the result of [`ManagementFactory.getMemoryPoolMXBeans()`](https://docs.oracle.com/javase/10/docs/api/java/lang/management/ManagementFactory.html#getMemoryPoolMXBeans\(\)). Firstly we're interested in heap memory pools and secondly in the one that supports usage threshold. Usage threshold is only supported for the tenured generation memory pool, the reason given in the documentation is [efficiency](https://docs.oracle.com/javase/10/docs/api/java/lang/management/MemoryPoolMXBean.html#UsageThreshold): young generation memory pools are intended for high frequency allocation of mostly short-lived objects and usage threshold has little meaning in this context. Without a further delay, below is the code to find the tenured generation `MemoryPoolMXBean`:
 
-        MemoryPoolMXBean tenuredGen = ManagementFactory.getMemoryPoolMXBeans().stream()
-            .filter(pool -> pool.getType() == MemoryType.HEAP)
-            .filter(MemoryPoolMXBean::isUsageThresholdSupported)
-            .findFirst()
-            .orElseThrow(() -> new IllegalStateException(
-                "Can't find tenured generation MemoryPoolMXBean"));
+```java
+MemoryPoolMXBean tenuredGen = ManagementFactory.getMemoryPoolMXBeans().stream()
+    .filter(pool -> pool.getType() == MemoryType.HEAP)
+    .filter(MemoryPoolMXBean::isUsageThresholdSupported)
+    .findFirst()
+    .orElseThrow(() -> new IllegalStateException(
+        "Can't find tenured generation MemoryPoolMXBean"));
+```
 
 Now that we have access to the `MemoryPoolMXBean` setting a threshold for memory usage right after collection is simple:
 
-        tenuredGen.setCollectionUsageThreshold(X);
+```java
+tenuredGen.setCollectionUsageThreshold(X);
+```
 
 X would be an absolute number in bytes. Note that size of a tenured memory pool is dependent on both heap and GC configuration so we need to set it to a value relative to a maximum size of the pool (the specific value of the threshold suitable for detection of out of memory situations will have to determined experimentally):
 
-        double threshold = 0.99;
-        MemoryUsage usage = memoryPoolMxBean.getUsage();
-        memoryPoolMxBean.setCollectionUsageThreshold((int)Math.floor(usage.getMax()
-                * threshold));
+```java
+double threshold = 0.99;
+MemoryUsage usage = memoryPoolMxBean.getUsage();
+memoryPoolMxBean.setCollectionUsageThreshold((int)Math.floor(usage.getMax()
+        * threshold));
+```
 
 Now there are two ways to know if the threshold is exceeded: one is to poll a count with [`MemoryPoolMXBean.getCollectionUsageThresholdCount`](https://docs.oracle.com/javase/7/docs/api/java/lang/management/MemoryPoolMXBean.html#getCollectionUsageThresholdCount\(\)) and another is to subscribe to be notified every time the threshold is exceeded which is what's needed for our purpose:
 
-        NotificationEmitter notificationEmitter =
-                (NotificationEmitter) ManagementFactory.getMemoryMXBean();
-        notificationEmitter.addNotificationListener((notification, handback) -> {
-                if (MemoryNotificationInfo.MEMORY_COLLECTION_THRESHOLD_EXCEEDED
-                        .equals(notification.getType())) {
-                    // Log, send an alert or whatever makes sense in your situation
-                    System.err.println("Running low on memory");
-                }
-            }, null, null);
+```java
+NotificationEmitter notificationEmitter =
+        (NotificationEmitter) ManagementFactory.getMemoryMXBean();
+notificationEmitter.addNotificationListener((notification, handback) -> {
+        if (MemoryNotificationInfo.MEMORY_COLLECTION_THRESHOLD_EXCEEDED
+                .equals(notification.getType())) {
+            // Log, send an alert or whatever makes sense in your situation
+            System.err.println("Running low on memory");
+        }
+    }, null, null);
+```
 
 So we've got a system in place to detect when a system approaches an out of memory error. There's a detail that needed to be dealt with for the solution to work correctly: JVM heap can grow and the tenured generation memory pool together with it making the set collection usage threshold incorrect. To mitigate the problem we can leverage memory pool usage threshold notifications which in themselves do not signify a problem as was explained above but will be triggered before collection threshold is exceeded. To set the threshold:
 
-        memoryPoolMxBean.setUsageThreshold((int)Math.floor(usage.getMax() * threshold));
+```java
+memoryPoolMxBean.setUsageThreshold((int)Math.floor(usage.getMax() * threshold));
+```
 
 The notification listener for the memory pool can be extended to handle `MEMORY_THRESHOLD_EXCEEDED` notification type and update the thresholds.
 
