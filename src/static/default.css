@@ -1,7 +1,6 @@
 body {
     margin: 40px auto;
     max-width: 750px;
-    line-height: 1.6;
     font-size: 18px;
     color: #444;
     padding: 0 10px
@@ -10,14 +9,13 @@ body {
 div#header {
     border-bottom: 1px solid black;
     margin-bottom: 30px;
-    padding-bottom:  12px
+    padding-bottom: 6px;
+    font-family: sans-serif;
 }
 
 div#logo a {
-    font-size: 20px;
     color: black;
     float: left;
-    font-weight: bold;
     text-decoration: none
 }
 
@@ -30,6 +28,10 @@ div#header #navigation a {
     font-size: 18px;
     margin-left: 12px;
     text-decoration: none;
+}
+
+#content {
+    line-height: 1.6;
 }
 
 div#footer {
