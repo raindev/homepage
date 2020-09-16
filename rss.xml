@@ -7,10 +7,31 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://raindev.io/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Tue, 25 Sep 2018 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 16 Sep 2020 00:00:00 +0000</lastBuildDate>
         
             <item>
-                <title>Detecting java.lang.OutOfMemoryError before it happens</title>
+                <title>Why Intuition Works</title>
+                <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
+                <link>https://raindev.io/blog/why-intuition-works/</link>
+                <guid>https://raindev.io/blog/why-intuition-works/</guid>
+                <description>&lt;p&gt;It&#x27;s easy to be sceptical of intuition. Making decisions unconsciously without understanding the reasons behind or being able to articulate the way we arrived at them. This seems irresponsible. On the other hand if intuition is something that&#x27;s characteristic of us as species, there&#x27;s a good chance it was acquired for a reason and has some value.&lt;&#x2F;p&gt;
+&lt;p&gt;If you are dismissive about the value of intuition, imagine just for a second why it &lt;em&gt;might&lt;&#x2F;em&gt; work. A plausible explanation is actually very simple: finding an answer is much easier than explaining how to arrive at the answer. If you have tried to explain a problem you are comfortable solving to someone else, you&#x27;ve probably have experienced this feeling yourself. Our brain can collect countless subtle cues about a problem and construct a way to obtain the result. Understanding of how we have arrived at the solution requires a lot of additional effort, reflective study of ourselves and analysis of our cognitive process. For this reason there are a lot more questions we can answer than we can explain.&lt;&#x2F;p&gt;
+&lt;p&gt;As with much of the human behaviour, to understand why we are wired in a certain way might require looking into the past. The fact that intuition is something we all share to a certain degree suggests that it is likely an evolutionary adaptation. Easy to imagine that through out the most of the history of our species, especially in the early days, making decisions was more important than being able to explain them. Natural selection punished indecisiveness. It was important to resolve whether to run or to fight in a split second. In fact more important than making the right call. Delaying a decision would mean an imminent death in many prehistoric situations.&lt;&#x2F;p&gt;
+&lt;p&gt;This leaves us with the fact that intuition can be useful in making a decision. Especially a time sensitive decision, as the tool specifically produced by the evolution for this kind of a situations. Of course it doesn&#x27;t mean that we should be content with the tools inherited from our ancestors. One of the effect of the progress made by our civilization is that we no longer need to spend all of our time fighting for resources, giving us a chance to contemplate the question &amp;quot;why&amp;quot;.&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>Taking the First Step</title>
+                <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+                <link>https://raindev.io/blog/first-step/</link>
+                <guid>https://raindev.io/blog/first-step/</guid>
+                <description>&lt;p&gt;I&#x27;ll be upfront: the only reason for this post is to resume this blog. It&#x27;s been almost two years since I have published the last article. And it&#x27;s not for the lack of things to write about. I had too many ideas over this time. Not for the lack of effort either: there are a few drafts that never made it live. I can ponder about reasons why this has happened but it doesn&#x27;t really matter. It you want to achieve something, you got to take the first step. It doesn&#x27;t have to be perfect and you cannot wait for the ideal moment. The life is too short for that. Now go and take &lt;em&gt;your&lt;&#x2F;em&gt; first step.&lt;&#x2F;p&gt;
+</description>
+            </item>
+        
+            <item>
+                <title>Detecting Java OutOfMemoryError before it happens</title>
                 <pubDate>Tue, 25 Sep 2018 00:00:00 +0000</pubDate>
                 <link>https://raindev.io/blog/detecting-jvm-oome/</link>
                 <guid>https://raindev.io/blog/detecting-jvm-oome/</guid>
@@ -23,35 +44,35 @@
 &lt;p&gt;Wait, the title promised detecting OOME &lt;em&gt;before&lt;&#x2F;em&gt; it happens? Here comes the second approach. The idea is quite simple: instead of measuring memory usage we measure how much memory is still occupied right after a garbage collection was performed. While it&#x27;s not easy to get the number directly there&#x27;s a way to get a notification when a predefined threshold is exceeded. It&#x27;s achieved with &lt;a href=&quot;https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;10&#x2F;docs&#x2F;api&#x2F;java&#x2F;lang&#x2F;management&#x2F;package-summary.html&quot;&gt;Java management API&lt;&#x2F;a&gt; (also exposed via &lt;a href=&quot;https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;10&#x2F;docs&#x2F;api&#x2F;javax&#x2F;management&#x2F;package-summary.html&quot;&gt;JMX&lt;&#x2F;a&gt;).&lt;&#x2F;p&gt;
 &lt;p&gt;Before we continue it worth clarifying that in modern JVM all the heap memory is split into separate areas or &amp;quot;memory pools&amp;quot; for efficiency reasons. The pools are usually generational: created objects first end up in a pool for young generation, then survival generation eventually being placed into old or tenured generation if an object is still used after multiple collections. Split into generations and their number is dependent on a specific type of garbage collector used. When an OOME happens the tenured generation memory pool gets full. Why tenured pool specifically? Objects that are still needed move up in the hierarchy of generations until ending up in tenured generation. If an object is not used anymore it will be garbage collected and won&#x27;t end up in the tenured memory pool (or will be removed from it). See &lt;a href=&quot;https:&#x2F;&#x2F;mechanical-sympathy.blogspot.com&#x2F;2013&#x2F;07&#x2F;java-garbage-collection-distilled.html&quot;&gt;this great article&lt;&#x2F;a&gt; for explanations how JVM heap is organized depending on what garbage collector is used. &lt;a href=&quot;https:&#x2F;&#x2F;visualvm.github.io&quot;&gt;VisualVM&lt;&#x2F;a&gt; has an plugin called Visual GC which is an awesome way to see how a running application&#x27;s heap looks like live.&lt;&#x2F;p&gt;
 &lt;p&gt;So we&#x27;re interested in being notified about running low on space in tenured generation memory pool. An interface for interacting with a JVM memory pool is provided by &lt;a href=&quot;https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;10&#x2F;docs&#x2F;api&#x2F;java&#x2F;lang&#x2F;management&#x2F;MemoryPoolMXBean.html&quot;&gt;&lt;code&gt;MemoreyPoolMXBean&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;. The bean for the pool we&#x27;re interested in can be obtained by filtering the result of &lt;a href=&quot;https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;10&#x2F;docs&#x2F;api&#x2F;java&#x2F;lang&#x2F;management&#x2F;ManagementFactory.html#getMemoryPoolMXBeans()&quot;&gt;&lt;code&gt;ManagementFactory.getMemoryPoolMXBeans()&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;. Firstly we&#x27;re interested in heap memory pools and secondly in the one that supports usage threshold. Usage threshold is only supported for the tenured generation memory pool, the reason given in the documentation is &lt;a href=&quot;https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;10&#x2F;docs&#x2F;api&#x2F;java&#x2F;lang&#x2F;management&#x2F;MemoryPoolMXBean.html#UsageThreshold&quot;&gt;efficiency&lt;&#x2F;a&gt;: young generation memory pools are intended for high frequency allocation of mostly short-lived objects and usage threshold has little meaning in this context. Without a further delay, below is the code to find the tenured generation &lt;code&gt;MemoryPoolMXBean&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
-&lt;pre&gt;&lt;code&gt;    MemoryPoolMXBean tenuredGen = ManagementFactory.getMemoryPoolMXBeans().stream()
-        .filter(pool -&amp;gt; pool.getType() == MemoryType.HEAP)
-        .filter(MemoryPoolMXBean::isUsageThresholdSupported)
-        .findFirst()
-        .orElseThrow(() -&amp;gt; new IllegalStateException(
-            &amp;quot;Can&#x27;t find tenured generation MemoryPoolMXBean&amp;quot;));
+&lt;pre&gt;&lt;code&gt;MemoryPoolMXBean tenuredGen = ManagementFactory.getMemoryPoolMXBeans().stream()
+    .filter(pool -&amp;gt; pool.getType() == MemoryType.HEAP)
+    .filter(MemoryPoolMXBean::isUsageThresholdSupported)
+    .findFirst()
+    .orElseThrow(() -&amp;gt; new IllegalStateException(
+        &amp;quot;Can&#x27;t find tenured generation MemoryPoolMXBean&amp;quot;));
 &lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Now that we have access to the &lt;code&gt;MemoryPoolMXBean&lt;&#x2F;code&gt; setting a threshold for memory usage right after collection is simple:&lt;&#x2F;p&gt;
-&lt;pre&gt;&lt;code&gt;    tenuredGen.setCollectionUsageThreshold(X);
+&lt;pre&gt;&lt;code&gt;tenuredGen.setCollectionUsageThreshold(X);
 &lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;X would be an absolute number in bytes. Note that size of a tenured memory pool is dependent on both heap and GC configuration so we need to set it to a value relative to a maximum size of the pool (the specific value of the threshold suitable for detection of out of memory situations will have to determined experimentally):&lt;&#x2F;p&gt;
-&lt;pre&gt;&lt;code&gt;    double threshold = 0.99;
-    MemoryUsage usage = memoryPoolMxBean.getUsage();
-    memoryPoolMxBean.setCollectionUsageThreshold((int)Math.floor(usage.getMax()
-            * threshold));
+&lt;pre&gt;&lt;code&gt;double threshold = 0.99;
+MemoryUsage usage = memoryPoolMxBean.getUsage();
+memoryPoolMxBean.setCollectionUsageThreshold((int)Math.floor(usage.getMax()
+        * threshold));
 &lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Now there are two ways to know if the threshold is exceeded: one is to poll a count with &lt;a href=&quot;https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;7&#x2F;docs&#x2F;api&#x2F;java&#x2F;lang&#x2F;management&#x2F;MemoryPoolMXBean.html#getCollectionUsageThresholdCount()&quot;&gt;&lt;code&gt;MemoryPoolMXBean.getCollectionUsageThresholdCount&lt;&#x2F;code&gt;&lt;&#x2F;a&gt; and another is to subscribe to be notified every time the threshold is exceeded which is what&#x27;s needed for our purpose:&lt;&#x2F;p&gt;
-&lt;pre&gt;&lt;code&gt;    NotificationEmitter notificationEmitter =
-            (NotificationEmitter) ManagementFactory.getMemoryMXBean();
-    notificationEmitter.addNotificationListener((notification, handback) -&amp;gt; {
-            if (MemoryNotificationInfo.MEMORY_COLLECTION_THRESHOLD_EXCEEDED
-                    .equals(notification.getType())) {
-                &#x2F;&#x2F; Log, send an alert or whatever makes sense in your situation
-                System.err.println(&amp;quot;Running low on memory&amp;quot;);
-            }
-        }, null, null);
+&lt;pre&gt;&lt;code&gt;NotificationEmitter notificationEmitter =
+        (NotificationEmitter) ManagementFactory.getMemoryMXBean();
+notificationEmitter.addNotificationListener((notification, handback) -&amp;gt; {
+        if (MemoryNotificationInfo.MEMORY_COLLECTION_THRESHOLD_EXCEEDED
+                .equals(notification.getType())) {
+            &#x2F;&#x2F; Log, send an alert or whatever makes sense in your situation
+            System.err.println(&amp;quot;Running low on memory&amp;quot;);
+        }
+    }, null, null);
 &lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;So we&#x27;ve got a system in place to detect when a system approaches an out of memory error. There&#x27;s a detail that needed to be dealt with for the solution to work correctly: JVM heap can grow and the tenured generation memory pool together with it making the set collection usage threshold incorrect. To mitigate the problem we can leverage memory pool usage threshold notifications which in themselves do not signify a problem as was explained above but will be triggered before collection threshold is exceeded. To set the threshold:&lt;&#x2F;p&gt;
-&lt;pre&gt;&lt;code&gt;    memoryPoolMxBean.setUsageThreshold((int)Math.floor(usage.getMax() * threshold));
+&lt;pre&gt;&lt;code&gt;memoryPoolMxBean.setUsageThreshold((int)Math.floor(usage.getMax() * threshold));
 &lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;The notification listener for the memory pool can be extended to handle &lt;code&gt;MEMORY_THRESHOLD_EXCEEDED&lt;&#x2F;code&gt; notification type and update the thresholds.&lt;&#x2F;p&gt;
 &lt;p&gt;The solution presented in the article is not perfect and it&#x27;s important to understand its limitations. The two main ones I can think of are running out of memory early in the application startup before the heap monitoring is set up and &lt;code&gt;OutOfMemoryError&lt;&#x2F;code&gt; that is thrown when trying to allocate a large chunk of memory at once. The first one can be mitigated by making sure &lt;code&gt;LowHeapMemoryMonitor&lt;&#x2F;code&gt; is created early in the application life cycle. The second limitation can be hit when allocating a large array, for example. Both of the problems are usually possible to detect early on before the application is deployed to production. Another kind of issue possible to run into is when memory is consumed really fast: even if the notification about collection usage threshold exceeded is received the application can fail to react fast enough and run out of memory before the listener completes its work. If the action desired to take is not very quick and may require memory allocation on its own, like sending remote logs or an email, it might be wise to perform a low overhead operation first, e.g. write to &lt;code&gt;System.err&lt;&#x2F;code&gt;. In case you find the application to miss to take out of memory actions is might make sense to lower the collection threshold.&lt;&#x2F;p&gt;
@@ -109,7 +130,7 @@
                 <description>&lt;h1 id=&quot;part-3-let-s-get-a-gui&quot;&gt;Part 3: Let&#x27;s Get a GUI&lt;&#x2F;h1&gt;
 &lt;p&gt;This is the third and the final part of my Build Yourself Arch Linux series (&lt;a href=&quot;https:&#x2F;&#x2F;raindev.io&#x2F;blog&#x2F;build-yourself-arch-linux-1&#x2F;&quot;&gt;part 1&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;raindev.io&#x2F;blog&#x2F;build-yourself-arch-linux-2&#x2F;&quot;&gt;part 2&lt;&#x2F;a&gt;). In this part I&#x27;ll finally get to a graphical environment setup.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;gnome&quot;&gt;GNOME&lt;&#x2F;h2&gt;
-&lt;p&gt;Before settling down on &lt;a href=&quot;https:&#x2F;&#x2F;gnome.org&#x2F;&quot;&gt;GNOME&lt;&#x2F;a&gt; I&#x27;ve tried (well installed and played around for 10 minutes) most of &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Desktop_environment#List_of_desktop_environments&quot;&gt;the desktop environments supported by Arch&lt;&#x2F;a&gt;. I&#x27;ve been using GNOME 3 in the past but decided to look what else is out there. The reason I&#x27;ve settled on GNOME now is HiDPI support. While there&#x27;re other desktop environments that support HiDPI GNOME gave me the best result with pretty much no configuration. I was really tempted by &lt;a href=&quot;https:&#x2F;&#x2F;www.kde.org&#x2F;plasma-desktop&quot;&gt;KDE Plasma&lt;&#x2F;a&gt; which looks gorgeous and does support HiDPI. Still on MacBook&#x27;s screen GNOME was a bit more consistent: I&#x27;ve got too small icons here and there in Plasma. &lt;a href=&quot;http:&#x2F;&#x2F;lxqt.org&#x2F;&quot;&gt;LXQT&lt;&#x2F;a&gt; is another DE I&#x27;m interested in. Given the progress towards HiDPI support or possibility of getting an external monitor with ordinary resolution I&#x27;ll probably be able to reevaluate my choice of desktop environment soon enough.&lt;&#x2F;p&gt;
+&lt;p&gt;Before settling down on &lt;a href=&quot;https:&#x2F;&#x2F;gnome.org&#x2F;&quot;&gt;GNOME&lt;&#x2F;a&gt; I&#x27;ve tried (well installed and played around for 10 minutes) most of &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Desktop_environment#List_of_desktop_environments&quot;&gt;the desktop environments supported by Arch&lt;&#x2F;a&gt;. I&#x27;ve been using GNOME 3 in the past but decided to look what else is out there. The reason I&#x27;ve settled on GNOME now is HiDPI support. While there&#x27;re other desktop environments that support HiDPI GNOME gave me the best result with pretty much no configuration. I was really tempted by &lt;a href=&quot;https:&#x2F;&#x2F;www.kde.org&#x2F;plasma-desktop&quot;&gt;KDE Plasma&lt;&#x2F;a&gt; which looks gorgeous and does support HiDPI. Still on MacBook&#x27;s screen GNOME was a bit more consistent: I&#x27;ve got too small icons here and there in Plasma. &lt;a href=&quot;https:&#x2F;&#x2F;lxqt.github.io&#x2F;&quot;&gt;LXQT&lt;&#x2F;a&gt; is another DE I&#x27;m interested in. Given the progress towards HiDPI support or possibility of getting an external monitor with ordinary resolution I&#x27;ll probably be able to reevaluate my choice of desktop environment soon enough.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;installation&quot;&gt;Installation&lt;&#x2F;h3&gt;
 &lt;p&gt;Installation of GNOME was quite an easy task: I went for &amp;quot;minimal&amp;quot; &lt;code&gt;gnome-shell&lt;&#x2F;code&gt; package which is around 750 MB of dependencies in total (instead of around 1500 MB for &lt;code&gt;gnome&lt;&#x2F;code&gt; and 2030 MB for &lt;code&gt;gnome-extra&lt;&#x2F;code&gt;). As I was going to use &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Wayland&quot;&gt;Wayland&lt;&#x2F;a&gt;, I had to get &lt;a href=&quot;https:&#x2F;&#x2F;wayland.freedesktop.org&#x2F;xserver.html&quot;&gt;XWayland&lt;&#x2F;a&gt; separately: &lt;code&gt;xorg-server-xwayland&lt;&#x2F;code&gt; package wasn&#x27;t pulled in as a dependency that led to &lt;code&gt;gnome-shell[600]: Failed to spawn Xwayland: Failed to execute child process &amp;quot;&#x2F;usr&#x2F;bin&#x2F;Xwayland&amp;quot; (No such file or directory)&lt;&#x2F;code&gt; when starting GNOME.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;startup&quot;&gt;Startup&lt;&#x2F;h3&gt;
