@@ -49,6 +49,10 @@ div.info {
     font-style: italic;
 }
 
+.footnote {
+    font-size: 12px;
+}
+
 div#license {
     float: left;
 }
