@@ -49,8 +49,12 @@ div.info {
     font-style: italic;
 }
 
+.ref {
+    font-size: smaller;
+}
+
 .footnote {
-    font-size: 12px;
+    font-size: smaller;
 }
 
 div#license {
