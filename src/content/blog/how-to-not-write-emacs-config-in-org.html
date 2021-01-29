@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-01-29 Fr 23:26 -->
+<!-- 2021-01-30 Sa 00:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How to not write Emacs config in Org</title>
@@ -285,14 +285,14 @@ error: Recursive load, /home/raindev/.emacs.d/init.el, /home/raindev/.emacs.d/in
 </pre>
 
 <p>
-Whoa!  My first line of Emacs Lisp configuration and somehow I broke
-my Emacs already and made it load the config again and again.  I
-search the Internet for the error message in vain, went in frustration
-to #emacs and cried for help.  I've been told that it looks like
-<code>org-babel-load-file</code> needs something that hasn't been initialized
-yet.  It makes sense, I thought.  With some guidance (thanks pjb!) I
-made Emacs load the .org file later when .el file has already been
-processed:
+Whoa!  My first line of configuration and somehow I broke Emacs
+already and made it load the config again and again.  I searched the
+Internet for the error message in vain, in frustration went to #emacs
+and cried for help.  I've been told that it looks like
+<code>org-babel-load-file</code> needs something that hasn't been initialized yet
+causing Emacs to attempt to load the config again.  It makes sense, I
+thought.  With some guidance (thanks pjb!) I made Emacs load the .org
+file 5 seconds later when init.el has already been processed:
 </p>
 
 <div class="org-src-container">
@@ -324,7 +324,7 @@ Hm, this is interesting, I thought.  The problem happened <i>after</i>
 Emacs was fully initialized as well.  I killed unresponsive Emacs and
 started it without loading the config using <code>emacs -q</code>. I hit <code>M-x</code>
 and used <code>eval-expression</code> to run <code>(org-babel-load-file
-"~/.emacs.d/init.org")</code>.  No surprisingly, the same thing happened:
+"~/.emacs.d/init.org")</code>.  Not surprisingly, the same thing happened:
 Emacs started reloading the config endlessly.
 </p>
 
@@ -344,7 +344,7 @@ up!
 <p>
 I could see the chain of function calls that led to the error.  Even
 more I could click on them and see the source code.  Wow! This is
-amazing!  I had the source code of Emacs packages laying open before
+amazing!  I had the source code of Emacs' packages right in front of
 me.
 </p>
 
@@ -383,14 +383,14 @@ And that's what happened a couple of lines below:
 <p>
 So, the function exports the source code to a file with the same name
 but .el extension.  Ah!  As there was no code in <code>projects.org</code>
-nothing was exported and that's why I've got <code>file-missing</code> error.
+nothing was exported leading to <code>file-missing</code> error.
 </p>
 
 <p>
-Going back to the original problem with the new knowledge, why wasn't
+Going back to the original problem with the new knowledge: why wasn't
 <code>init.el</code> replaced by the code from <code>init.org</code> then?  Oh, wait, wasn't
 it?  Remember the first time I loaded the Org config, I discovered
-I've accidentally written the config to <code>init.el</code>.  I didn't!
+I've accidentally written the config to <code>init.el</code> directly.  I didn't!
 </p>
 
 <div class="org-src-container">
@@ -430,7 +430,7 @@ loaded once.
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2021-01-29 Fr 00:00</p>
-<p class="date">Created: 2021-01-29 Fr 23:26</p>
+<p class="date">Created: 2021-01-30 Sa 00:06</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

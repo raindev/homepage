@@ -33,14 +33,14 @@ buffer popped up and showed me this error:
 error: Recursive load, /home/raindev/.emacs.d/init.el, /home/raindev/.emacs.d/init.el, /home/raindev/.emacs.d/init.el, /home/raindev/.emacs.d/init.el, /home/raindev/.emacs.d/init.el
 #+end_src
 
-Whoa!  My first line of Emacs Lisp configuration and somehow I broke
-my Emacs already and made it load the config again and again.  I
-search the Internet for the error message in vain, went in frustration
-to #emacs and cried for help.  I've been told that it looks like
-=org-babel-load-file= needs something that hasn't been initialized
-yet.  It makes sense, I thought.  With some guidance (thanks pjb!) I
-made Emacs load the .org file later when .el file has already been
-processed:
+Whoa!  My first line of configuration and somehow I broke Emacs
+already and made it load the config again and again.  I searched the
+Internet for the error message in vain, in frustration went to #emacs
+and cried for help.  I've been told that it looks like
+=org-babel-load-file= needs something that hasn't been initialized yet
+causing Emacs to attempt to load the config again.  It makes sense, I
+thought.  With some guidance (thanks pjb!) I made Emacs load the .org
+file 5 seconds later when init.el has already been processed:
 
 #+begin_src emacs-lisp
   (defun load-org-config ()
@@ -67,7 +67,7 @@ Hm, this is interesting, I thought.  The problem happened /after/
 Emacs was fully initialized as well.  I killed unresponsive Emacs and
 started it without loading the config using =emacs -q=. I hit =M-x=
 and used =eval-expression= to run =(org-babel-load-file
-"~/.emacs.d/init.org")=.  No surprisingly, the same thing happened:
+"~/.emacs.d/init.org")=.  Not surprisingly, the same thing happened:
 Emacs started reloading the config endlessly.
 
 In despair, the next time I loaded just a random =projects.org= file
@@ -79,7 +79,7 @@ up!
 
 I could see the chain of function calls that led to the error.  Even
 more I could click on them and see the source code.  Wow! This is
-amazing!  I had the source code of Emacs packages laying open before
+amazing!  I had the source code of Emacs' packages right in front of
 me.
 
 I started exploring.  The error message was:
@@ -109,12 +109,12 @@ And that's what happened a couple of lines below:
 
 So, the function exports the source code to a file with the same name
 but .el extension.  Ah!  As there was no code in =projects.org=
-nothing was exported and that's why I've got =file-missing= error.
+nothing was exported leading to =file-missing= error.
 
-Going back to the original problem with the new knowledge, why wasn't
+Going back to the original problem with the new knowledge: why wasn't
 =init.el= replaced by the code from =init.org= then?  Oh, wait, wasn't
 it?  Remember the first time I loaded the Org config, I discovered
-I've accidentally written the config to =init.el=.  I didn't!
+I've accidentally written the config to =init.el= directly.  I didn't!
 
 #+begin_src emacs-lisp
 ;; Tangle only if the Org file is newer than the Elisp file
