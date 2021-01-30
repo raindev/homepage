@@ -10,7 +10,112 @@
         <email>andrew@raindev.io</email>
     </author>
     
-    <updated>2020-12-02T00:00:00+00:00</updated>
+    <updated>2021-01-30T00:00:00+00:00</updated>
+    
+    <entry>
+        <title>How to not Write Emacs Config in Org</title>
+        <link href="https://raindev.io/blog/how-to-not-write-emacs-config-in-org/"/>
+        <id>https://raindev.io/blog/how-to-not-write-emacs-config-in-org/</id>
+        <published>2021-01-30T00:00:00+00:00</published>
+        <updated>2018-09-25T00:00:00Z</updated>
+        <content type="html">&lt;p&gt;I have started simple. &lt;code&gt;~&#x2F;.emacs.d&#x2F;init.el&lt;&#x2F;code&gt; had just one line:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;(org-babel-load-file &amp;quot;~&#x2F;.emacs.d&#x2F;init.org&amp;quot;)
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;init.org&lt;&#x2F;code&gt; was simple too:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;#+begin_src emacs-lisp
+  (setq org-directory &amp;quot;~&#x2F;org&amp;quot;)
+#+end_src
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;After restarting Emacs everything seems to have worked fine &lt;code&gt;C-h v&lt;&#x2F;code&gt;
+told me that the value of &lt;code&gt;org-directory&lt;&#x2F;code&gt; is indeed &lt;code&gt;~&#x2F;org&lt;&#x2F;code&gt;.  So far
+so good.  I have opened &lt;code&gt;init.el&lt;&#x2F;code&gt; and its content was:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;(setq org-directory &amp;quot;~&#x2F;org&amp;quot;)
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;That&#x27;s right, the same as the code I had in the source block in
+&lt;code&gt;init.org&lt;&#x2F;code&gt;.  Clumsy Emacs beginner, I thought, I must have written the
+wrong file!  I have fixed it quickly to put &lt;code&gt;org-babel-load-file&lt;&#x2F;code&gt; in
+the right place and restarted Emacs.  Right after start &lt;code&gt;*Warnings*&lt;&#x2F;code&gt;
+buffer popped up and showed me this error:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;error: Recursive load, &#x2F;home&#x2F;raindev&#x2F;.emacs.d&#x2F;init.el, &#x2F;home&#x2F;raindev&#x2F;.emacs.d&#x2F;init.el, &#x2F;home&#x2F;raindev&#x2F;.emacs.d&#x2F;init.el, &#x2F;home&#x2F;raindev&#x2F;.emacs.d&#x2F;init.el, &#x2F;home&#x2F;raindev&#x2F;.emacs.d&#x2F;init.el
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Whoa!  My first line of configuration and somehow I broke Emacs
+already and made it load the config again and again.  I searched the
+Internet for the error message in vain, in frustration went to #emacs
+and cried for help.  I&#x27;ve been told that it looks like
+&lt;code&gt;org-babel-load-file&lt;&#x2F;code&gt; needs something that hasn&#x27;t been initialized yet
+causing Emacs to attempt to load the config again.  It makes sense, I
+thought.  With some guidance (thanks pjb!) I made Emacs load the .org
+file 5 seconds later when init.el has already been processed:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;(defun load-org-config ()
+  (org-babel-load-file &amp;quot;~&#x2F;.emacs.d&#x2F;init.org&amp;quot;))
+
+(run-at-time 5 1 &#x27;load-org-config)
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Once again, I restarted Emacs.  This time, no error messages on
+startup. When I switched to &lt;code&gt;*Messages*&lt;&#x2F;code&gt; however, I saw an endless
+stream of:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;Loading &#x2F;home&#x2F;raindev&#x2F;.emacs.d&#x2F;init.el (source)...done
+Loaded ~&#x2F;.emacs.d&#x2F;init.el
+Loading &#x2F;home&#x2F;raindev&#x2F;.emacs.d&#x2F;init.el (source)...done
+Loaded ~&#x2F;.emacs.d&#x2F;init.el
+Loading &#x2F;home&#x2F;raindev&#x2F;.emacs.d&#x2F;init.el (source)...done
+Loaded ~&#x2F;.emacs.d&#x2F;init.el
+...
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Hm, this is interesting, I thought.  The problem happened &lt;em&gt;after&lt;&#x2F;em&gt;
+Emacs was fully initialized as well.  I killed unresponsive Emacs and
+started it without loading the config using &lt;code&gt;emacs -q&lt;&#x2F;code&gt;. I hit &lt;code&gt;M-x&lt;&#x2F;code&gt;
+and used &lt;code&gt;eval-expression&lt;&#x2F;code&gt; to run &lt;code&gt;(org-babel-load-file &amp;quot;~&#x2F;.emacs.d&#x2F;init.org&amp;quot;)&lt;&#x2F;code&gt;.  Not surprisingly, the same thing happened:
+Emacs started reloading the config endlessly.&lt;&#x2F;p&gt;
+&lt;p&gt;In despair, the next time I loaded just a random &lt;code&gt;projects.org&lt;&#x2F;code&gt; file
+that didn&#x27;t have any configuration or any source code whatsoever.  I&#x27;ve
+got an error.  But also something magical happened - a debugger popped
+up!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raindev.io&#x2F;blog&#x2F;how-to-not-write-emacs-config-in-org&#x2F;emacs-org-babel-load-file-debugger.png&quot; alt=&quot;img&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I could see the chain of function calls that led to the error.  Even
+more I could click on them and see the source code.  Wow! This is
+amazing!  I had the source code of Emacs&#x27; packages right in front of
+me.&lt;&#x2F;p&gt;
+&lt;p&gt;I started exploring.  The error message was:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;(file-missing &amp;quot;Cannot open load file&amp;quot; &amp;quot;No such file or directory&amp;quot; &amp;quot;&#x2F;home&#x2F;raindev&#x2F;org&#x2F;projects.el&amp;quot;)
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;That&#x27;s strange, I thought.  I have loaded &lt;code&gt;projects.org&lt;&#x2F;code&gt; and not
+&lt;code&gt;projects.el&lt;&#x2F;code&gt;.  Something is going on.  Looking at the backtrace I
+could see &lt;code&gt;org-babel-load-file(&amp;quot;~&#x2F;org&#x2F;projects.org&amp;quot;)&lt;&#x2F;code&gt; - that&#x27;s the
+function I have called.  The next call was
+&lt;code&gt;load-file(&amp;quot;~&#x2F;org&#x2F;projects.el&amp;quot;)&lt;&#x2F;code&gt; - .org has changed to .el.  Something
+must have happened during the previous step.  I clicked on
+&lt;code&gt;org-babel-load-file&lt;&#x2F;code&gt; and started reading the code:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;This function exports the source code using `org-babel-tangle&#x27;
+and then loads the resulting file using `load-file&#x27;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And that&#x27;s what happened a couple of lines below:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;(let* ((tangled-file (concat (file-name-sans-extension file) &amp;quot;.el&amp;quot;)
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;So, the function exports the source code to a file with the same name
+but .el extension.  Ah!  As there was no code in &lt;code&gt;projects.org&lt;&#x2F;code&gt;
+nothing was exported leading to &lt;code&gt;file-missing&lt;&#x2F;code&gt; error.&lt;&#x2F;p&gt;
+&lt;p&gt;Going back to the original problem with the new knowledge: why wasn&#x27;t
+&lt;code&gt;init.el&lt;&#x2F;code&gt; replaced by the code from &lt;code&gt;init.org&lt;&#x2F;code&gt; then?  Oh, wait, wasn&#x27;t
+it?  Remember the first time I loaded the Org config, I discovered
+I&#x27;ve accidentally written the config to &lt;code&gt;init.el&lt;&#x2F;code&gt; directly.  I didn&#x27;t!&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;;; Tangle only if the Org file is newer than the Elisp file
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;org-babel-load-file&lt;&#x2F;code&gt; did.  As the comment says, the function only
+writes .el file if the .org file is newer.  That&#x27;s what happened the
+first time.  Afterwards I kept tweaking &lt;code&gt;init.el&lt;&#x2F;code&gt; so it was always
+newer than &lt;code&gt;init.org&lt;&#x2F;code&gt;.  But what else, when &lt;code&gt;org-babel-load-file&lt;&#x2F;code&gt; was
+executed Emacs thought &lt;code&gt;init.el&lt;&#x2F;code&gt; is the file that has the code
+exported from &lt;code&gt;init.org&lt;&#x2F;code&gt; and loaded it.  In turn it has called the
+same function and entered the endless cycle.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raindev.io&#x2F;blog&#x2F;how-to-not-write-emacs-config-in-org&#x2F;emacs-org-recursive-reloading.jpg&quot; alt=&quot;img&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The solution was simple - give the Org config a different name:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;(org-babel-load-file &amp;quot;~&#x2F;.emacs.d&#x2F;config.org&amp;quot;)
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And that&#x27;s it.  &lt;code&gt;config.org&lt;&#x2F;code&gt; will get exported to &lt;code&gt;config.el&lt;&#x2F;code&gt; and
+loaded once.&lt;&#x2F;p&gt;
+</content>
+    </entry>
     
     <entry>
         <title>Operability and Rust</title>
