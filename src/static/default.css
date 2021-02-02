@@ -68,3 +68,7 @@ pre {
 body {
     word-break: break-word;
 }
+
+#content img {
+  width: 100%;
+}
