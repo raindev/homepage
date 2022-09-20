@@ -49,6 +49,10 @@
         <lastmod>2021-01-30</lastmod>
     </url>
     <url>
+        <loc>https://raindev.io/blog/mixing-sync-and-async-rust/</loc>
+        <lastmod>2022-09-15</lastmod>
+    </url>
+    <url>
         <loc>https://raindev.io/blog/operability-and-rust/</loc>
         <lastmod>2020-12-02</lastmod>
     </url>
