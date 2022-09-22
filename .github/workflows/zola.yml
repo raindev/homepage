@@ -44,12 +44,11 @@ jobs:
         id: pages
         uses: actions/configure-pages@v2
       - name: Build with Zola
-        run: |
-          zola --root src/ build
+        run: zola build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./src/public
+          path: ./public
 
   # Deployment job
   deploy:
