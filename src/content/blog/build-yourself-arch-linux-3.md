@@ -78,7 +78,7 @@ The only tweaking I did in the result was to enable tap to click, increase touch
 
 ## Text editor
 
-I've replaced vim with gVim (one of the reasons being vim is compiled without +clipboard, meaning no clipboard access). Of course command line vim binary is included in the package as well. Because gVim's icon looks ugly on high resolution displays I've replaced it with the one from [VimR project](http://vimr.org). To do it change `Icon` value in gVim's .desktop file to the path to the new image (copy desktop file first to prevent overwrites as mentioned [above](#gnome-shell)).
+I've replaced vim with gVim (one of the reasons being vim is compiled without +clipboard, meaning no clipboard access). Of course command line vim binary is included in the package as well. Because gVim's icon looks ugly on high resolution displays I've replaced it with the one from [VimR project](http://vimr.org). To do it change `Icon` value in gVim's .desktop file to the path to the new image (copy desktop file first to prevent overwrites as mentioned [above](#gnome)).
 
 ## Video player
 
