@@ -45,11 +45,11 @@ jobs:
         uses: actions/configure-pages@v2
       - name: Build with Zola
         run: |
-          zola -r src/ build && pwd && ls && ls ./public/
+          zola --root src/ build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./public
+          path: ./src/public
 
   # Deployment job
   deploy:
