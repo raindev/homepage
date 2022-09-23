@@ -4,12 +4,9 @@ The blog is build with [Zola](https://www.getzola.org) and hosted with [GitHub
 Pages](https://pages.github.com). The theme is inspired by [this
 website](http://bettermotherfuckingwebsite.com).
 
-All the source of the blog resides inside [src/](src), all the published
-content is in the top level directory.
-
 ## Building
 
-To build the site run `make`. To run the site locally use `make run`.
+To build the site run `zola build`. To run the site locally use `zola serve`.
 
 ## Licenses
 
