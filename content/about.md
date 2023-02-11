@@ -3,9 +3,10 @@ title = "About"
 aliases = [ "about.html" ]
 +++
 
-Curious programmer. Enthusiast. Thinker. Reader. Listener. Observer. Minimalist
+Curious programmer. Enthusiast. Thinker. Reader. Listener. Observer.
 
-My name is Andrew Barchuk. Usually you can find me online as raindev.
+My name is Andrew. Usually you can find me online as raindev. For more frequent
+posts feel free to follow me on [Mastodon](https://mstdn.io/@raindev).
 
 [Here](/cv.pdf) is my CV.
 
