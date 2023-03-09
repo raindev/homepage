@@ -1,18 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Downloads github.com/raindev/env and launches setup
 set -euo pipefail
 
-if ! command -v git > /dev/null ; then
-	if command -v xbps-install > /dev/null ; then
-		sudo xbps-install --sync --yes git
-	else
-		echo "Don't know how to install git"
-	fi
+if ! command -v nix > /dev/null; then
+	echo '>installing Nix'
+	sh <(curl -sSL https://nixos.org/nix/install) --daemon
 fi
-
-if [ ! -e "$HOME/code/env" ]; then
-	git clone https://github.com/raindev/env.git "$HOME/code/env/"
-	cd "$HOME/code/env"
-	git remote set-url origin git@github.com:raindev/env.git
-fi
-"$HOME/code/env/configure"
+curl -sSL https://raw.githubusercontent.com/raindev/nix-config/main/configure > /tmp/configure
+chmod +x /tmp/configure
+/tmp/configure
