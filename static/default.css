@@ -10,13 +10,21 @@ div#header {
     border-bottom: 1px solid black;
     margin-bottom: 30px;
     padding-bottom: 6px;
+    line-height: 40px;
     font-family: sans-serif;
 }
 
 div#logo a {
     color: black;
     float: left;
-    text-decoration: none
+    text-decoration: none;
+    text-align: right;
+    padding-left: 34px;
+    background-size: 26px;
+    background-image: url("logo.png");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: left;
 }
 
 div#header #navigation {
