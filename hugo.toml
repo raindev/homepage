@@ -9,6 +9,7 @@ theme = "github.com/Mitrichius/hugo-theme-anubis"
 [params]
   style = "auto"
   rssAsSocialIcon = true
+  customCSS = [ "custom.css" ]
 
 [[menu.main]]
 name = "All Posts"
