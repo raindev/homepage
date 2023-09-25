@@ -1,7 +1,6 @@
 +++
 title = "Granular Git Configuration"
 date = 2018-04-16
-aliases = [ "granular-git-configuration.html" ]
 +++
 
 Even though in most cases having a single Git configuration is enough, sometimes more granular control is needed. Let's say you have a common Git configuration you use on your personal server, a laptop and a desktop. You probably want to share that configuration across the machines as part of your [dotfiles repository](https://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/). Also you have a work laptop and you need some special Git configuration for work projects. Occasionally you commit to your personal repositories or some open source repositories from the work laptop and you don't want to have the work configuration applied in those cases. Let's see how you can organize the Git configuration to match the described setup step by step.

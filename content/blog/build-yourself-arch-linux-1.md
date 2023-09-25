@@ -1,7 +1,6 @@
 +++
 title = "Build Yourself Arch Linux"
 date = 2016-11-21
-aliases = [ "build-yourself-arch-linux-1.html" ]
 +++
 
 # Part 1: Base System

@@ -1,7 +1,6 @@
 +++
 title = "Paper"
 date = 2017-03-21
-aliases = [ "paper.html" ]
 +++
 
 <small>_(written on December 23, 2016)_</small>

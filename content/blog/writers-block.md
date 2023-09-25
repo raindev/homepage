@@ -1,7 +1,6 @@
 +++
 title = "On Writer's Block"
 date = 2016-11-11
-aliases = [ "writers-block.html" ]
 +++
 
 If you'll have a look on [timeline](@/blog/_index.md) of this blog of mine it will be obvious that I'm dealing with writer's block. I always wanted to have _real_ blog, to do `git push` to publish, to build it _from scratch_ myself. And about 9 month ago I got it. I found [Hakyll](https://jaspervdj.be/hakyll/) which felt awesome, like assembling a model airplane from parts. I've refined it over couple of weeks and got what I wanted to have. The first post event caught some attention as I've decided to post it to Reddit. There has been both positive and negative [feedback](https://www.reddit.com/r/vim/comments/484isa/why_i_use_space_as_my_vim_leader_key/). But there will _always_ be negative feedback, so it was fine.

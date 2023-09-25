@@ -1,7 +1,6 @@
 +++
 title = "Detecting Java OutOfMemoryError before it happens"
 date = 2018-09-25
-aliases = [ "detecting-jvm-oome.html" ]
 +++
 
 Is it even possible, you might ask? Well, not really, we can't predict the future. But we _can_ detect the situation leading to `OutOfMemoryError`, lack of free heap memory, before it actually occurs. Technically there're other causes of OutOfMemoryError [described in detail here](https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/memleaks002.html) which are outside of the scope of the article and arguably less frequent and interesting.

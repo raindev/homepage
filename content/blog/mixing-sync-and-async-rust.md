@@ -1,7 +1,6 @@
 +++
 title = "Mixing Sync and Async Rust"
 date = 2022-09-15
-aliases = [ "mixing-sync-and-async-rust.md" ]
 +++
 
 Recently I have read [JEP 426](https://openjdk.org/jeps/425), Java enhancement proposal introducing virtual threads - essentially a way to map multiple Java threads to a few operating system threads. I thought it's brilliant, especially the fact that the virtual threads could run _unmodified_ code.
