@@ -2,3 +2,6 @@ baseURL = 'http://raindev.io'
 languageCode = 'en-us'
 title = 'Thoughts and Opinions'
 theme = "github.com/Mitrichius/hugo-theme-anubis"
+[markup]
+    [markup.highlight]
+      style = "catppuccin-latte"
