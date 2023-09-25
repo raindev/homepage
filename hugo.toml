@@ -4,7 +4,7 @@ title = 'raindev | Thoughts and Opinions'
 theme = "github.com/Mitrichius/hugo-theme-anubis"
 [markup]
     [markup.highlight]
-      style = "catppuccin-latte"
+      noClasses = false
 
 [params]
   style = "auto"
