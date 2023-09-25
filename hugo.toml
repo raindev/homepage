@@ -8,6 +8,7 @@ theme = "github.com/Mitrichius/hugo-theme-anubis"
 
 [params]
   style = "auto"
+  rssAsSocialIcon = true
 
 [[menu.main]]
 name = "All Posts"
