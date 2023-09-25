@@ -8,3 +8,15 @@ theme = "github.com/Mitrichius/hugo-theme-anubis"
 
 [params]
   style = "auto"
+
+[[menu.main]]
+name = "About"
+identifier = "about"
+url = "/about/"
+weight = 0
+
+[[menu.main]]
+name = "Contact"
+identifier = "contact"
+url = "/contact/"
+weight = 1
