@@ -10,13 +10,19 @@ theme = "github.com/Mitrichius/hugo-theme-anubis"
   style = "auto"
 
 [[menu.main]]
-name = "About"
-identifier = "about"
-url = "/about/"
-weight = 0
+name = "All Posts"
+identifier = "posts"
+url = "/blog/"
+weight = 1
 
 [[menu.main]]
 name = "Contact"
 identifier = "contact"
 url = "/contact/"
-weight = 1
+weight = 2
+
+[[menu.main]]
+name = "About"
+identifier = "about"
+url = "/about/"
+weight = 3
