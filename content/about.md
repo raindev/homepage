@@ -1,5 +1,6 @@
 +++
 title = "About"
+disable_feed = true
 +++
 
 Curious programmer. Enthusiast. Thinker. Reader. Listener. Observer.
