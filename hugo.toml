@@ -11,6 +11,18 @@ theme = "github.com/Mitrichius/hugo-theme-anubis"
   rssAsSocialIcon = true
   customCSS = [ "custom.css" ]
 
+[[params.social]]
+id = "github"
+name = "raindev"
+
+[[params.social]]
+id = "twitter"
+name = "raindev_"
+
+[[params.social]]
+id = "email"
+name = "andrew@raindev.io"
+
 [[menu.main]]
 name = "All Posts"
 identifier = "posts"
