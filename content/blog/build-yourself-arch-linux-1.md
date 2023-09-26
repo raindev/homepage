@@ -5,7 +5,7 @@ date = 2016-11-21
 
 # Part 1: Base System
 
-This is the first part of a series of articles ([part 2](@/blog/build-yourself-arch-linux-2/index.md), [part 3](@/blog/build-yourself-arch-linux-3.md)) on how I set up dual boot Arch Linux on my Mid 2014 MacBook Pro. At the end of this part I'll have a bootable but completely minimal installation of Arch on an encrypted partition without any tuning. Ability to boot to Mac OS will be preserved.
+This is the first part of a series of articles ([part 2](/blog/build-yourself-arch-linux-2), [part 3](/blog/build-yourself-arch-linux-3)) on how I set up dual boot Arch Linux on my Mid 2014 MacBook Pro. At the end of this part I'll have a bootable but completely minimal installation of Arch on an encrypted partition without any tuning. Ability to boot to Mac OS will be preserved.-1-1
 
 ### Updates
 
