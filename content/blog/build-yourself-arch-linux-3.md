@@ -1,7 +1,6 @@
 +++
 title = "Build Yourself Arch Linux, Part 3"
 date = 2017-10-11
-aliases = [ "build-yourself-arch-linux-3.html" ]
 +++
 
 # Part 3: Let's Get a GUI

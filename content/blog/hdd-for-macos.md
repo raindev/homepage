@@ -1,7 +1,6 @@
 +++
 title = "How to Partition an External Hard Drive for macOS"
 date = 2017-06-15
-aliases = [ "hdd-for-macos.html" ]
 +++
 
 TL;DR macOS expects 200 MB EFI System partition in the beginning of a hard drive, don't like unformatted partitions and creates 128 MB Apple boot partitions after each real partition whenever you format it.

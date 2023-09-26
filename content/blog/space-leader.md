@@ -1,7 +1,6 @@
 +++
 title = "Space Leader"
 date = 2016-02-27
-aliases = [ "space-leader.html" ]
 +++
 
 <small>_(written on December 12, 2015)_</small>

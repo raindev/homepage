@@ -1,7 +1,6 @@
 +++
 title = "What's Wrong with WhatsApp Message Tunneling"
 date = 2017-05-07
-aliases = [ "whatsapp-tunneling.html" ]
 +++
 
 A colleague asked me on Twitter what the problems do I have with the way WhatsApp tunnels all the messages though my phone:

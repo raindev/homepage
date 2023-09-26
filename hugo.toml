@@ -1,0 +1,30 @@
+baseURL = 'http://raindev.io'
+languageCode = 'en-us'
+title = 'raindev | Thoughts and Opinions'
+theme = "github.com/Mitrichius/hugo-theme-anubis"
+[markup]
+    [markup.highlight]
+      noClasses = false
+
+[params]
+  style = "auto"
+  rssAsSocialIcon = true
+  customCSS = [ "custom.css" ]
+
+[[menu.main]]
+name = "All Posts"
+identifier = "posts"
+url = "/blog/"
+weight = 1
+
+[[menu.main]]
+name = "Contact"
+identifier = "contact"
+url = "/contact/"
+weight = 2
+
+[[menu.main]]
+name = "About"
+identifier = "about"
+url = "/about/"
+weight = 3

@@ -1,7 +1,6 @@
 +++
 title = "The Cycle of Complexity"
 date = 2023-09-16
-aliases = [ "cycle-of-complexity.md" ]
 +++
 
 Complexity can have many different sources. Things do not materialise the way we imagined, experiments fail, new technologies or tools do not prove as useful as advertised. Our understanding of the problem improves overtime, sometimes the problem itself or the direction we want to go changes. Exposing projects to time results in layering of different, even conflicting, ideas. Having more than a single person working on a system only amplifies those effects.

@@ -1,7 +1,6 @@
 +++
 title = "Build Yourself Arch Linux, Part 2"
 date = 2017-04-02
-aliases = [ "build-yourself-arch-linux-2.html" ]
 +++
 
 # Part 2: Getting Work Done from Console

@@ -1,7 +1,6 @@
 +++
 title = "Hash Collision"
 date = 2016-11-20
-aliases = [ "hash-collision.html" ]
 +++
 
 # Or Why I'm Leaving Google's Services

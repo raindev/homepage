@@ -1,12 +1,12 @@
-# My blog about all sorts of stuff
+# My personal blog
 
-The blog is build with [Zola](https://www.getzola.org) and hosted with [GitHub
-Pages](https://pages.github.com). The theme is inspired by [this
-website](http://bettermotherfuckingwebsite.com).
+The website is build with [Hugo](https://gohugo.io) ([Anubis
+theme](https://github.com/Mitrichius/hugo-theme-anubis)) and hosted with
+[GitHub Pages](https://pages.github.com).
 
 ## Building
 
-To build the site run `zola build`. To run the site locally use `zola serve`.
+To build the site run `hugo`. To run the site locally use `hugo server`.
 
 ## Licenses
 
