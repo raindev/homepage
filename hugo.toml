@@ -2,9 +2,9 @@ baseURL = "http://raindev.io"
 languageCode = "en-us"
 title = "raindev | Andrew's Blog"
 theme = "hugo-bearblog"
-[markup]
-    [markup.highlight]
-      noClasses = false
+
+[markup.goldmark.renderer]
+	unsafe = true
 
 [params]
   style = "auto"
