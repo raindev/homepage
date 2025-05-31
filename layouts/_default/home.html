@@ -1,7 +1,17 @@
 {{ define "main" }}
   {{ .Content }}
   <h3>Recent posts</h3>
+  <ul>
   {{ range first 3 (where site.RegularPages "Section" "blog") }}
     <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
   {{ end }}
+  </ul>
+  <h3>Popular posts</h3>
+  <ul>
+  {{ range slice "blog/http-content-and-transfer-encoding" "blog/mixing-sync-and-async-rust" "blog/detecting-jvm-oome"  }}
+    {{ with $.Site.GetPage . }}
+      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+    {{ end }}
+  {{ end }}
+  </ul>
 {{ end }}
