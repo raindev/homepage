@@ -6,10 +6,13 @@ theme = "hugo-bearblog"
 [markup.goldmark.renderer]
 	unsafe = true
 
+[markup.highlight]
+  noClasses = false
+  lineNos = true
+
 [params]
   style = "auto"
   rssAsSocialIcon = true
-  customCSS = [ "custom.css" ]
   favicon = "static/favicon.png"
 
 [[params.social]]
