@@ -1,7 +1,7 @@
-baseURL = 'http://raindev.io'
-languageCode = 'en-us'
-title = 'raindev | Thoughts and Opinions'
-theme = "github.com/Mitrichius/hugo-theme-anubis"
+baseURL = "http://raindev.io"
+languageCode = "en-us"
+title = "raindev | Andrew's Blog"
+theme = "hugo-bearblog"
 [markup]
     [markup.highlight]
       noClasses = false
@@ -10,14 +10,15 @@ theme = "github.com/Mitrichius/hugo-theme-anubis"
   style = "auto"
   rssAsSocialIcon = true
   customCSS = [ "custom.css" ]
+  favicon = "static/favicon.png"
 
 [[params.social]]
 id = "github"
 name = "raindev"
 
 [[params.social]]
-id = "twitter"
-name = "raindev_"
+id = "bluesky"
+name = "raindev.io"
 
 [[params.social]]
 id = "email"

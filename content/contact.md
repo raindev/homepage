@@ -4,4 +4,4 @@ disable_feed = true
 +++
 
 The best way to contact me is [email](mailto:andrew@raindev.io). Feel free to
-[tweet or follow me](https://twitter.com/raindev_) as well.
+drop me a message on [BlueSky](https://bsky.app/profile/raindev.io) as well.
