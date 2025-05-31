@@ -1,0 +1,23 @@
+.title h2 {
+    display: inline;
+}
+.logo {
+    width: 24px;
+    padding-right: 10px;
+    vertical-align: -2px;
+}
+code {
+  /* Padding introduces misalignment of the first line number. */
+  padding: 0px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: invert(90%);
+  }
+
+  {{ partial "css/syntax-dark.css" . | safeCSS }}
+}
+@media (prefers-color-scheme: light) {
+  {{ partial "css/syntax-light.css" . | safeCSS }}
+}
