@@ -1,0 +1,7 @@
+{{ define "main" }}
+  {{ .Content }}
+  <h3>Recent posts</h3>
+  {{ range first 3 (where site.RegularPages "Section" "blog") }}
+    <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+  {{ end }}
+{{ end }}
