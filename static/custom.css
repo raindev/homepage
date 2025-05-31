@@ -1,3 +1,7 @@
+.title {
+	display: block;
+	margin: 20px 0;
+}
 .title h2 {
     display: inline;
 }
@@ -9,15 +13,4 @@
 code {
   /* Padding introduces misalignment of the first line number. */
   padding: 0px;
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert(90%);
-  }
-
-  {{ partial "css/syntax-dark.css" . | safeCSS }}
-}
-@media (prefers-color-scheme: light) {
-  {{ partial "css/syntax-light.css" . | safeCSS }}
 }
