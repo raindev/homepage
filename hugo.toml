@@ -11,6 +11,7 @@ noClasses = false
 lineNos = true
 
 [params]
+description = "Personal homepage and blog of Andrew Barchuk"
 favicon = "static/favicon.png"
 
 [[menu.main]]
