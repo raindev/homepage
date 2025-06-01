@@ -14,3 +14,7 @@ code {
   /* Padding introduces misalignment of the first line number. */
   padding: 0px;
 }
+.chroma code {
+  /* Avoid different background for line number cells. */
+  background-color: inherit;
+}
