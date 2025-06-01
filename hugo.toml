@@ -4,28 +4,14 @@ title = "raindev | Andrew's Blog"
 theme = "hugo-bearblog"
 
 [markup.goldmark.renderer]
-	unsafe = true
+unsafe = true
 
 [markup.highlight]
-  noClasses = false
-  lineNos = true
+noClasses = false
+lineNos = true
 
 [params]
-  style = "auto"
-  rssAsSocialIcon = true
-  favicon = "static/favicon.png"
-
-[[params.social]]
-id = "github"
-name = "raindev"
-
-[[params.social]]
-id = "bluesky"
-name = "raindev.io"
-
-[[params.social]]
-id = "email"
-name = "andrew@raindev.io"
+favicon = "static/favicon.png"
 
 [[menu.main]]
 name = "All Posts"
